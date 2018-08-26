@@ -32,7 +32,7 @@ public class PotSpoon : MonoBehaviour {
                 {
                     Drug tempDrug = ShelfManager.Instance.shelfBottleList[i].GetComponent<Drug>();
 
-                    if (tempDrug.drugType == 0)
+                    if (tempDrug.drugType == -1)
                     {
                         tempDrug.setDrug(drugType);
                         ShelfManager.Instance.bottleUsed++;

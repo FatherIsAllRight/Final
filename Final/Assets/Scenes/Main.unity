@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 15409537}
   - component: {fileID: 15409538}
   - component: {fileID: 15409539}
+  - component: {fileID: 15409540}
   m_Layer: 0
   m_Name: drug-left
   m_TagString: Untagged
@@ -138,7 +139,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 15409535}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.106, y: 0.43, z: 0}
+  m_LocalPosition: {x: 0.106, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 858385203}
@@ -183,7 +184,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.63, y: 0.96}
+  m_Size: {x: 1.39, y: 1.74}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -201,21 +202,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drugType: 0
   drugList:
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 464158b72900d4ced8b16618bcc8493e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
+  - {fileID: 21300000, guid: 6acba80e6349f456c80b1e5d7d4ba2d8, type: 3}
+  - {fileID: 21300000, guid: 4df3772085f3043eb92e8da37d5f9304, type: 3}
+  - {fileID: 21300000, guid: a6b5ceed1edd2452ebd321e760a86949, type: 3}
+  - {fileID: 21300000, guid: 549e555c505c141e9b101ee4d413f8c4, type: 3}
+  - {fileID: 21300000, guid: 991cfc61fccd445bdbcc2f846b13b08c, type: 3}
+  - {fileID: 21300000, guid: 8ee1ad5b2b51a4bd6836de1c7298eef3, type: 3}
+  - {fileID: 21300000, guid: 2cdf43202c40f40368fd2706d9a6e076, type: 3}
+  - {fileID: 21300000, guid: c7e31f0b1970747898b6a709722a916a, type: 3}
+  - {fileID: 21300000, guid: e86b9d572d01345788408584791e0c59, type: 3}
+  - {fileID: 21300000, guid: 0a8a49b7fcdaa494facd3ced90f23cf6, type: 3}
+  - {fileID: 21300000, guid: c298787386e9047948b798e5cad56c9b, type: 3}
+  - {fileID: 21300000, guid: 330255912dc4d4c3197ebf5f3bb9d5c1, type: 3}
+  - {fileID: 21300000, guid: 59cb9f46cc96b49ad98e750c496297cf, type: 3}
+  - {fileID: 21300000, guid: 449689184ddfc46428a596815400bd7b, type: 3}
+  - {fileID: 21300000, guid: f666f844191324d46ae0bbc66ec577d1, type: 3}
 --- !u!95 &15409539
 Animator:
   serializedVersion: 3
@@ -233,6 +234,31 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!61 &15409540
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 15409535}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.39, y: 1.74}
+    newSize: {x: 1.39, y: 1.74}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.2, y: 1.2}
+  m_EdgeRadius: 0
 --- !u!1 &52884415
 GameObject:
   m_ObjectHideFlags: 0
@@ -2793,7 +2819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34da01686f2cf487a8d3a9766a5f771d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnMaxTime: 0
+  turnMaxTime: 5
 --- !u!1 &1485887171
 GameObject:
   m_ObjectHideFlags: 0
@@ -2878,6 +2904,7 @@ GameObject:
   - component: {fileID: 1535299172}
   - component: {fileID: 1535299171}
   - component: {fileID: 1535299170}
+  - component: {fileID: 1535299173}
   m_Layer: 0
   m_Name: drug-middle
   m_TagString: Untagged
@@ -2892,7 +2919,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1535299168}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.43, z: 0}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1625973612}
@@ -2928,21 +2955,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drugType: 0
   drugList:
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 464158b72900d4ced8b16618bcc8493e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
+  - {fileID: 21300000, guid: 6acba80e6349f456c80b1e5d7d4ba2d8, type: 3}
+  - {fileID: 21300000, guid: 4df3772085f3043eb92e8da37d5f9304, type: 3}
+  - {fileID: 21300000, guid: a6b5ceed1edd2452ebd321e760a86949, type: 3}
+  - {fileID: 21300000, guid: 549e555c505c141e9b101ee4d413f8c4, type: 3}
+  - {fileID: 21300000, guid: 991cfc61fccd445bdbcc2f846b13b08c, type: 3}
+  - {fileID: 21300000, guid: 8ee1ad5b2b51a4bd6836de1c7298eef3, type: 3}
+  - {fileID: 21300000, guid: 2cdf43202c40f40368fd2706d9a6e076, type: 3}
+  - {fileID: 21300000, guid: c7e31f0b1970747898b6a709722a916a, type: 3}
+  - {fileID: 21300000, guid: e86b9d572d01345788408584791e0c59, type: 3}
+  - {fileID: 21300000, guid: 0a8a49b7fcdaa494facd3ced90f23cf6, type: 3}
+  - {fileID: 21300000, guid: c298787386e9047948b798e5cad56c9b, type: 3}
+  - {fileID: 21300000, guid: 330255912dc4d4c3197ebf5f3bb9d5c1, type: 3}
+  - {fileID: 21300000, guid: 59cb9f46cc96b49ad98e750c496297cf, type: 3}
+  - {fileID: 21300000, guid: 449689184ddfc46428a596815400bd7b, type: 3}
+  - {fileID: 21300000, guid: f666f844191324d46ae0bbc66ec577d1, type: 3}
 --- !u!212 &1535299172
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2987,6 +3014,31 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
+--- !u!61 &1535299173
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1535299168}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.2, y: 1.2}
+  m_EdgeRadius: 0
 --- !u!1 &1546514295
 GameObject:
   m_ObjectHideFlags: 0
@@ -4067,6 +4119,7 @@ GameObject:
   - component: {fileID: 1979150992}
   - component: {fileID: 1979150991}
   - component: {fileID: 1979150990}
+  - component: {fileID: 1979150993}
   m_Layer: 0
   m_Name: drug-right
   m_TagString: Untagged
@@ -4081,7 +4134,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1979150988}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.048, y: 0.43, z: 0}
+  m_LocalPosition: {x: -0.048, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2035390863}
@@ -4117,21 +4170,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drugType: 0
   drugList:
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 464158b72900d4ced8b16618bcc8493e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
-  - {fileID: 21300000, guid: 5b666f1b1197e4deb87628e0dfe8a41e, type: 3}
+  - {fileID: 21300000, guid: 6acba80e6349f456c80b1e5d7d4ba2d8, type: 3}
+  - {fileID: 21300000, guid: 4df3772085f3043eb92e8da37d5f9304, type: 3}
+  - {fileID: 21300000, guid: a6b5ceed1edd2452ebd321e760a86949, type: 3}
+  - {fileID: 21300000, guid: 549e555c505c141e9b101ee4d413f8c4, type: 3}
+  - {fileID: 21300000, guid: 991cfc61fccd445bdbcc2f846b13b08c, type: 3}
+  - {fileID: 21300000, guid: 8ee1ad5b2b51a4bd6836de1c7298eef3, type: 3}
+  - {fileID: 21300000, guid: 2cdf43202c40f40368fd2706d9a6e076, type: 3}
+  - {fileID: 21300000, guid: c7e31f0b1970747898b6a709722a916a, type: 3}
+  - {fileID: 21300000, guid: e86b9d572d01345788408584791e0c59, type: 3}
+  - {fileID: 21300000, guid: 0a8a49b7fcdaa494facd3ced90f23cf6, type: 3}
+  - {fileID: 21300000, guid: c298787386e9047948b798e5cad56c9b, type: 3}
+  - {fileID: 21300000, guid: 330255912dc4d4c3197ebf5f3bb9d5c1, type: 3}
+  - {fileID: 21300000, guid: 59cb9f46cc96b49ad98e750c496297cf, type: 3}
+  - {fileID: 21300000, guid: 449689184ddfc46428a596815400bd7b, type: 3}
+  - {fileID: 21300000, guid: f666f844191324d46ae0bbc66ec577d1, type: 3}
 --- !u!212 &1979150992
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4176,6 +4229,31 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
+--- !u!61 &1979150993
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1979150988}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.2, y: 1.2}
+  m_EdgeRadius: 0
 --- !u!1 &2035390862
 GameObject:
   m_ObjectHideFlags: 0
@@ -4438,6 +4516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2072967062}
   - component: {fileID: 2072967063}
+  - component: {fileID: 2072967064}
   m_Layer: 0
   m_Name: Shelf
   m_TagString: Untagged
@@ -4478,6 +4557,18 @@ MonoBehaviour:
   - {fileID: 1535299168}
   - {fileID: 1979150988}
   bottleUsed: 0
+--- !u!114 &2072967064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2072967061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4def3b4735ea4b1fabb5154040eaf72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holdDrugType: 0
 --- !u!1 &2083681838
 GameObject:
   m_ObjectHideFlags: 0
