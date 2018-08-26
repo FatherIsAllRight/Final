@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: HeroHp
+    uniqueID: 3496953255
+    locked: 0
+  - name: EnemyHp
+    uniqueID: 1386906895
+    locked: 0

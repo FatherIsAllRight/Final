@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 27c4022567568445fa0c4efe92575b90
+timeCreated: 1535252855
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Love Ya Like A Sister Solid
+  fontNames:
+  - Love Ya Like A Sister Solid
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
