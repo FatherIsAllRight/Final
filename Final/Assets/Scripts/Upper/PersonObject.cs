@@ -551,7 +551,7 @@ public class PersonObject : MonoBehaviour {
                     //drugEffect.SetTrigger("Show");
                     break;
                 default:
-                    AddHp(-1);
+                    AddHp(Random.Range(-20, 21));
                     useMedicineAudio.Play();
                     drugEffect.SetTrigger("Show");
                     break;

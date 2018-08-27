@@ -92,7 +92,7 @@ public class UpperManager : MonoBehaviour {
 
                 nextRoom = 2;
 
-                switch(roomsType[currentRoom - 1])
+                switch (roomsType[currentRoom - 1])
                 {
                     case -1:
                         break;
@@ -120,7 +120,17 @@ public class UpperManager : MonoBehaviour {
                 roomPointer.transform.localPosition = new Vector3(rooms[currentRoom].transform.localPosition.x, rooms[currentRoom].transform.localPosition.y + 10, rooms[currentRoom].transform.localPosition.z);
                 rooms[currentRoom].GetComponent<SpriteRenderer>().sprite = roomsSprite[1];
                 roomIcons[currentRoom].GetComponent<SpriteRenderer>().sprite = null;
+
                 nextRoom = 0;
+
+                if (currentRoom == 1)
+                {
+                    Mask.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                }
+                if (currentRoom == roomsType.Length - 1)
+                {
+                    Mask.GetComponent<SpriteRenderer>().sortingOrder = 31;
+                }
             }
         }
     }

@@ -27,7 +27,7 @@ public class Dragon : PersonBehavior {
 
         myPersonObjectScript.skills[3] = new PersonObject.Skill();
         myPersonObjectScript.skills[3].selfWaitTurns = 1;
-        myPersonObjectScript.skills[3].hp = -400;
+        myPersonObjectScript.skills[3].hp = -149;
 
         materialDropTimes = 0;
     }
