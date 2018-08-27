@@ -15,6 +15,7 @@ public class Enemy1 : PersonBehavior {
 
         myPersonObjectScript.skills[0] = new PersonObject.Skill();
         myPersonObjectScript.skills[0].hp = -20;
+        myPersonObjectScript.skills[0].fireTurns = 2;
 
         materialDropTimes = 0;
     }

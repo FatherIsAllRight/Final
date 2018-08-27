@@ -85,13 +85,19 @@ public class BattleManager : MonoBehaviour {
 
         if (enemy.isDead())
         {
-            Debug.Log(1);
             battleStart = false;
             //drug use
             DrugUse.Instance.ClearHand();
             nextRoomButton.SetActive(true);
             Destroy(GameObject.FindGameObjectWithTag("Enemy"));
             enemyHpText.SetActive(false);
+            hero.fireTurns = 0;
+            hero.stunTurns = 0;
+            hero.powerUpTurns = 0;
+            hero.powerDownTurns = 0;
+            hero.defenseUpTurns = 0;
+            hero.defenseDownTurns = 0;
+            hero.drawBuffIcon();
         }
     }
 }
