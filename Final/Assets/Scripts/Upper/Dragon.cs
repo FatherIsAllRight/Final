@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy4 : PersonBehavior {
+public class Dragon : PersonBehavior {
 
     private PersonObject myPersonObjectScript;
     private int materialDropTimes;
+
+    [SerializeField] AudioClip[] skillAudios;
 
     // Use this for initialization
     void Start () {
@@ -80,4 +82,9 @@ public class Enemy4 : PersonBehavior {
         }
     }
 
+    public override void playMusic(int skillId)
+    {
+        this.gameObject.GetComponent<AudioSource>().clip = skillAudios[skillId];
+        this.gameObject.GetComponent<AudioSource>().Play();
+    }
 }

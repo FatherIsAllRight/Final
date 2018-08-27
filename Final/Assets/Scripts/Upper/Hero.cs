@@ -6,6 +6,8 @@ public class Hero : PersonBehavior {
 
     private PersonObject myPersonObjectScript;
 
+    [SerializeField] AudioSource[] skillAudios;
+
     // Use this for initialization
     void Start()
     {
@@ -29,5 +31,10 @@ public class Hero : PersonBehavior {
     public override void dropMaterial()
     {
         
+    }
+
+    public override void playMusic(int skillId)
+    {
+        skillAudios[Random.Range(0, 4)].Play();
     }
 }

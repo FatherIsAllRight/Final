@@ -16,4 +16,5 @@ public abstract class PersonBehavior : MonoBehaviour {
 
     public abstract int selectSkill();
     public abstract void dropMaterial();
+    public abstract void playMusic(int skillId);
 }

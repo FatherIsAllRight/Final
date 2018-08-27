@@ -97,13 +97,14 @@ public class BattleManager : MonoBehaviour {
 
         if (enemy.isDead())
         {
+            hero.clearBuff();
+            enemy.clearBuff();
             battleStart = false;
             //drug use
             DrugUse.Instance.ClearHand();
             nextRoomButton.SetActive(true);
             Destroy(GameObject.FindGameObjectWithTag("Enemy"));
             enemyHpText.SetActive(false);
-            hero.clearBuff();
         }
     }
 }

@@ -19,9 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4093692986091766}
-  - component: {fileID: 114096222427259476}
+  - component: {fileID: 114076038497002642}
   - component: {fileID: 114032247028030188}
   - component: {fileID: 61883485634957988}
+  - component: {fileID: 82056360034030892}
   m_Layer: 0
   m_Name: Dragon
   m_TagString: Enemy
@@ -218,6 +219,86 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2.4}
   m_EdgeRadius: 0
+--- !u!82 &82056360034030892
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1201481922985422}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95254315196375024
 Animator:
   serializedVersion: 3
@@ -272,8 +353,8 @@ MonoBehaviour:
     type: 2}
   healIcon: {fileID: 1913273943812276, guid: 33d31d0062262344a9f2ee81212e6f48, type: 2}
   frogIcon: {fileID: 1050743620435346, guid: 96183c9ce8fd1aa42b79ff63bbe47a1b, type: 2}
-  personBehavior: {fileID: 114096222427259476}
---- !u!114 &114096222427259476
+  personBehavior: {fileID: 0}
+--- !u!114 &114076038497002642
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -284,6 +365,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd39935c4b249fe44b6476c7dcc1a1fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillAudios:
+  - {fileID: 8300000, guid: 27f4c68f8b9ccee48ab7b2d7637d58a5, type: 3}
+  - {fileID: 8300000, guid: d67eaf7d429150c4998f8de9d099bee9, type: 3}
+  - {fileID: 8300000, guid: 20d8d6617dd9e9c4a803e05763d27bc0, type: 3}
+  - {fileID: 8300000, guid: 9f57b3fd36f03ac44b0a8d40a9f3354d, type: 3}
 --- !u!114 &114530032244379522
 MonoBehaviour:
   m_ObjectHideFlags: 1

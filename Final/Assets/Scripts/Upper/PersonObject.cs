@@ -264,6 +264,7 @@ public class PersonObject : MonoBehaviour {
                 opponentObjectScript.SetHealTurns(skills[lastSkillId].healTurns, skills[lastSkillId].healRestore);
                 opponentObjectScript.AddFrogTurns(skills[lastSkillId].frogTurns);
 
+                personBehavior.playMusic(lastSkillId);
                 lastSkillId = personBehavior.selectSkill();
             }
         }
@@ -294,6 +295,7 @@ public class PersonObject : MonoBehaviour {
                 opponentObjectScript.SetHealTurns(skills[lastSkillId].healTurns, skills[lastSkillId].healRestore);
                 opponentObjectScript.AddFrogTurns(skills[lastSkillId].frogTurns);
 
+                personBehavior.playMusic(lastSkillId);
                 lastSkillId = personBehavior.selectSkill();
             }
 

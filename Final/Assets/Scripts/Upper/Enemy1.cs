@@ -7,6 +7,8 @@ public class Enemy1 : PersonBehavior {
     private PersonObject myPersonObjectScript;
     private int materialDropTimes;
 
+    private AudioSource skillAudio;
+
     // Use this for initialization
     void Start()
     {
@@ -18,6 +20,8 @@ public class Enemy1 : PersonBehavior {
         myPersonObjectScript.skills[0].fireTurns = 2;
 
         materialDropTimes = 0;
+
+        skillAudio = GameObject.Find("Hit").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -68,5 +72,10 @@ public class Enemy1 : PersonBehavior {
             Bag.Instance.GetMaterial(materialList);
             materialDropTimes++;
         }
+    }
+
+    public override void playMusic(int skillId)
+    {
+        skillAudio.Play();
     }
 }
