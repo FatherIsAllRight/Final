@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -37,8 +39,15 @@ public class UpperManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         currentRoom = 0;
-        roomsType = new int[10] {-1, 0, -3, 0, -2, 0, -3, 0, -2, 1};
-        for(int i = 0; i < rooms.Length; i++)
+        roomsType = new int[10] {-1, 1, -3, -99, -99, -99, -99, -99, -2, 3};
+        int[] a = { -3, -2, 1, 2, 2 };
+        int[] b = a.OrderBy(x => Guid.NewGuid()).ToArray();
+        for(int i = 0; i < b.Length; i++)
+        {
+            roomsType[i + 3] = b[i];
+        }
+
+        for (int i = 0; i < rooms.Length; i++)
         {
             rooms[i].GetComponent<SpriteRenderer>().sprite = roomsSprite[0];
             roomIcons[i].GetComponent<SpriteRenderer>().sprite = roomIconsSprite[0];

@@ -431,7 +431,7 @@ MonoBehaviour:
     type: 2}
   healIcon: {fileID: 1913273943812276, guid: 33d31d0062262344a9f2ee81212e6f48, type: 2}
   frogIcon: {fileID: 1050743620435346, guid: 96183c9ce8fd1aa42b79ff63bbe47a1b, type: 2}
-  personBehavior: {fileID: 0}
+  personBehavior: {fileID: 114076038497002642}
   drugEffect: {fileID: 95421590973886876}
 --- !u!114 &114076038497002642
 MonoBehaviour:

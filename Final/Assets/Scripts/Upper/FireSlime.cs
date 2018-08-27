@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy1 : PersonBehavior {
+public class FireSlime : PersonBehavior {
 
     private PersonObject myPersonObjectScript;
     private int materialDropTimes;
@@ -13,10 +13,13 @@ public class Enemy1 : PersonBehavior {
     void Start()
     {
         myPersonObjectScript = GetComponent<PersonObject>();
-        myPersonObjectScript.skills = new PersonObject.Skill[1];
+        myPersonObjectScript.skills = new PersonObject.Skill[2];
 
         myPersonObjectScript.skills[0] = new PersonObject.Skill();
-        myPersonObjectScript.skills[0].hp = -20;
+        myPersonObjectScript.skills[0].hp = -40;
+
+        myPersonObjectScript.skills[1] = new PersonObject.Skill();
+        myPersonObjectScript.skills[1].fireTurns = 3;
 
         materialDropTimes = 0;
 
@@ -30,32 +33,36 @@ public class Enemy1 : PersonBehavior {
 
     public override int selectSkill()
     {
-        return 0;
+        int temp = Random.Range(0, 100);
+        if (temp < 80)
+            return 0;
+        else
+            return 1;
     }
 
     public override void dropMaterial()
     {
-        if (materialDropTimes == 0 && myPersonObjectScript.hp <= 100)
+        if (materialDropTimes == 0 && myPersonObjectScript.hp <= 200)
         {
             int[] materialList = new int[6];
-            materialList[0] = Random.Range(3, 5);
-            materialList[1] = Random.Range(0, 3);
+            materialList[0] = Random.Range(6, 9);
+            materialList[1] = 0;
             materialList[2] = 0;
             materialList[3] = 0;
             materialList[4] = 0;
-            materialList[5] = Random.Range(1, 3);
+            materialList[5] = Random.Range(3, 5);
             Bag.Instance.GetMaterial(materialList);
             materialDropTimes++;
         }
-        else if (materialDropTimes == 1 && myPersonObjectScript.hp <= 50)
+        else if (materialDropTimes == 1 && myPersonObjectScript.hp <= 100)
         {
             int[] materialList = new int[6];
-            materialList[0] = Random.Range(3, 5);
-            materialList[1] = Random.Range(0, 3);
+            materialList[0] = Random.Range(6, 9);
+            materialList[1] = 0;
             materialList[2] = 0;
             materialList[3] = 0;
             materialList[4] = 0;
-            materialList[5] = Random.Range(1, 3);
+            materialList[5] = Random.Range(3, 5);
             Bag.Instance.GetMaterial(materialList);
             materialDropTimes++;
         }
@@ -65,7 +72,7 @@ public class Enemy1 : PersonBehavior {
             materialList[0] = 0;
             materialList[1] = 0;
             materialList[2] = Random.Range(3, 6);
-            materialList[3] = 0;
+            materialList[3] = 1;
             materialList[4] = 0;
             materialList[5] = 0;
             Bag.Instance.GetMaterial(materialList);

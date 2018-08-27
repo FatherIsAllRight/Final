@@ -18,12 +18,12 @@ public class Dragon : PersonBehavior {
         myPersonObjectScript.skills[0].hp = -50;
 
         myPersonObjectScript.skills[1] = new PersonObject.Skill();
-        myPersonObjectScript.skills[1].hp = -40;
-        myPersonObjectScript.skills[1].fireTurns = 2;
+        myPersonObjectScript.skills[1].hp = -10;
+        myPersonObjectScript.skills[1].fireTurns = 5;
 
         myPersonObjectScript.skills[2] = new PersonObject.Skill();
         myPersonObjectScript.skills[2].hp = -50;
-        myPersonObjectScript.skills[2].stunTurns = 2;
+        myPersonObjectScript.skills[2].stunTurns = 5;
 
         myPersonObjectScript.skills[3] = new PersonObject.Skill();
         myPersonObjectScript.skills[3].selfWaitTurns = 1;
@@ -39,7 +39,15 @@ public class Dragon : PersonBehavior {
 
     public override int selectSkill()
     {
-        return Random.Range(3, 4);
+        int temp = Random.Range(0, 100);
+        if (temp < 65)
+            return 0;
+        else if (temp < 85)
+            return 1;
+        else if (temp < 95)
+            return 2;
+        else
+            return 3;
     }
 
     public override void dropMaterial()
@@ -75,7 +83,7 @@ public class Dragon : PersonBehavior {
             materialList[1] = 0;
             materialList[2] = 0;
             materialList[3] = 0;
-            materialList[4] = Random.Range(0, 3);
+            materialList[4] = 2;
             materialList[5] = 0;
             Bag.Instance.GetMaterial(materialList);
             materialDropTimes++;

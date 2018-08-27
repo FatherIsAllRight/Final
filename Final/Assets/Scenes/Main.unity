@@ -5653,6 +5653,8 @@ MonoBehaviour:
   nextRoomButton: {fileID: 1006152736}
   Enemy:
   - {fileID: 1695638951131390, guid: a9ad580994dc83844802de09b4e73791, type: 2}
+  - {fileID: 1623028172493754, guid: 203a5a9d631f59c47bce04cf97c4e6cc, type: 2}
+  - {fileID: 1420475478056160, guid: 39ec720e9b8cfb64a816d3a3893f593c, type: 2}
   - {fileID: 1201481922985422, guid: 57ad4198a7ef8a74a8ab81d156a2106d, type: 2}
   enemyHpText: {fileID: 1575475512}
   frogHero: {fileID: 21300000, guid: 97b833e7df9b04261900436f5134cb24, type: 3}
