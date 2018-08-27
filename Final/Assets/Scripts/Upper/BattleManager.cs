@@ -66,7 +66,7 @@ public class BattleManager : MonoBehaviour {
                     
                 if (moveTurn)
                 {
-                    Debug.Log("hero");
+                    //Debug.Log("hero");
                     hero.UseSkill(enemy);
                     if (hero.frogTurns <= 0)
                     {
@@ -74,7 +74,7 @@ public class BattleManager : MonoBehaviour {
                     }
                 }
                 else {
-                    Debug.Log("enemy");
+                    //Debug.Log("enemy");
                     enemy.UseSkill(hero);
                     if (enemy.frogTurns <= 0)
                     {

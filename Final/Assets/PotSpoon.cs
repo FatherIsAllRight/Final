@@ -13,12 +13,14 @@ public class PotSpoon : MonoBehaviour {
     [SerializeField] Animator glowAni;
     [SerializeField] GameObject fire;
     [SerializeField] AudioSource boilingAudio;
+    private Animator spoonAni;
     // Use this for initialization
     void Start () {
         cook = false;
         shine = false;
         cookCurrentTime = 0;
         drugType = -1;
+        spoonAni = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -60,6 +62,15 @@ public class PotSpoon : MonoBehaviour {
         }
         else
             fire.SetActive(false);
+        
+        if(UpperManager.Instance.DrugMakable() && !cook && PotManager.Instance.gridUsed == PotManager.Instance.gridList.Length && ShelfManager.Instance.shelfUsed < ShelfManager.Instance.shelfBottleList.Length)
+        {
+            spoonAni.SetBool("Hint", true);
+        }
+        else
+        {
+            spoonAni.SetBool("Hint", false);
+        }
 	}
 
     private void OnMouseDown()

@@ -25,7 +25,7 @@ public class DrugUse : MonoBehaviour {
         if (drug == null)
             return;
         drug.GetComponent<SpriteRenderer>().sprite = null;
-        Debug.Log("Use drug type : " + drug.drugType.ToString());
+        //Debug.Log("Use drug type : " + drug.drugType.ToString());
         drug.drugType = -1;
         drug.hand.SetActive(false);
         ShelfManager.Instance.shelfUsed--;
@@ -38,11 +38,4 @@ public class DrugUse : MonoBehaviour {
         drug.hand.SetActive(false);
         drug = null;
     }
-    /*
-    public void HoldDrug(int _drugType)
-    {
-        holdDrugType = _drugType;
-        //hold = true;
-    }
-    */
 }

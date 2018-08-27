@@ -556,6 +556,7 @@ public class PersonObject : MonoBehaviour {
                     drugEffect.SetTrigger("Show");
                     break;
             }
+            //battleManager.CheckSomeoneDead();
         }
     }
 }

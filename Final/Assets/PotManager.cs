@@ -51,9 +51,9 @@ public class PotManager : MonoBehaviour {
 
     public void InitPot()
     {
+        gridUsed = 0;
         for (int i = 0; i < gridList.Length; i++)
         {
-            gridUsed = 0;
             gridList[i].GetComponent<SpriteRenderer>().sprite = null;
             gridList[i].GetComponent<CircleCollider2D>().enabled = false;
             gridMaterialType[i] = -1;
