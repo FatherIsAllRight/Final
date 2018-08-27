@@ -22,7 +22,8 @@ public class BattleManager : MonoBehaviour {
     [SerializeField] GameObject[] Enemy;
     //[SerializeField] GameObject heroHpText;
     [SerializeField] GameObject enemyHpText;
-    [SerializeField] Sprite frog;
+    [SerializeField] Sprite frogHero;
+    [SerializeField] Sprite frogEnemy;
     // Use this for initialization
     void Start () {
 
@@ -126,8 +127,8 @@ public class BattleManager : MonoBehaviour {
     public void AllChange2Frog()
     {
         hero.GetComponentInChildren<Animator>().enabled = false;
-        hero.GetComponentInChildren<SpriteRenderer>().sprite = frog;
+        hero.GetComponentInChildren<SpriteRenderer>().sprite = frogHero;
         enemy.GetComponentInChildren<Animator>().enabled = false;
-        enemy.GetComponentInChildren<SpriteRenderer>().sprite = frog;
+        enemy.GetComponentInChildren<SpriteRenderer>().sprite = frogEnemy;
     }
 }

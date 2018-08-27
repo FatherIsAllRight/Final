@@ -93,6 +93,7 @@ public class PersonObject : MonoBehaviour {
 
     private AudioSource useMedicineAudio;
     private AudioSource useFrogAudio;
+    public Animator drugEffect;
 
     // Use this for initialization
     void Start()
@@ -419,16 +420,19 @@ public class PersonObject : MonoBehaviour {
                 case 1:
                     AddHp(40);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 2:
                     AddHp(-25);
                     AddFireTurns(-99);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 3:
                     AddHp(20);
                     SetHealTurns(5, 10);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 4:
                     AddFireTurns(-99);
@@ -438,60 +442,70 @@ public class PersonObject : MonoBehaviour {
                     AddFrogTurns(-99);
                     SetHealTurns(5, 10);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
+                    GetComponentInChildren<Animator>().enabled = true;
                     break;
                 case 5:
                     SetHealTurns(5, 20);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 6:
                     AddHp(-50);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 7:
                     SetHealTurns(8, 15);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 8:
                     AddHp(99);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 9:
                     AddFireTurns(5);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 10:
                     AddFireTurns(-99);
                     SetHealTurns(5, 10);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 11:
                     battleManager.enemy.AddFrogTurns(3);
                     battleManager.hero.AddFrogTurns(3);
-                    //
-                    GameObject.Find("BattleManager").GetComponent<BattleManager>().AllChange2Frog();
-                    /*GameObject hero = GameObject.Find("BattleManager").GetComponent<BattleManager>().hero.GetComponentInChildren<Animator>().gameObject;
-                    GameObject enemy = GameObject.Find("BattleManager").GetComponent<BattleManager>().enemy.GetComponentInChildren<Animator>().gameObject;
-                    hero.GetComponent<Animator>().enabled = false;
-                    hero.GetComponent<SpriteRenderer>().sprite = */
+                    battleManager.enemy.drugEffect.SetTrigger("Show");
+                    battleManager.hero.drugEffect.SetTrigger("Show");
+                    battleManager.AllChange2Frog();
                     useFrogAudio.Play();
                     break;
                 case 12:
                     AddPowerUpTurns(99);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 13:
                     battleManager.enemy.AddHp((int)(-battleManager.enemy.hpMax * 0.8f));
                     battleManager.hero.AddHp((int)(-battleManager.hero.hpMax * 0.8f));
+                    battleManager.enemy.drugEffect.SetTrigger("Show");
+                    battleManager.hero.drugEffect.SetTrigger("Show");
                     useMedicineAudio.Play();
                     break;
                 case 14:
                     int[] temp = { 0, 0, 0, 1, 0, 0 };
                     Bag.Instance.GetMaterial(temp);
                     useFrogAudio.Play();
+                    //drugEffect.SetTrigger("Show");
                     break;
                 default:
                     AddHp(-1);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
             }
         }

@@ -30,7 +30,9 @@ public class NoteManager : MonoBehaviour {
 	void Start () {
         pageNum = 1;
         notePageUnlock = new bool[notePageList.Length];
+        notePageUnlock[1] = true;
         noteSprite = GetComponent<SpriteRenderer>();
+        noteSprite.sprite = notePageList[1];
 	}
 	
 	// Update is called once per frame
