@@ -165,7 +165,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -355,7 +355,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 131702392ae0d41aca0a64a0625b4642, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8acf70fc2c2774cdb87c312c90368e3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -393,6 +393,7 @@ MonoBehaviour:
   Mask: {fileID: 2076277661}
   MaskTime: 2
   NextScene: 0
+  guide: {fileID: 21300000, guid: d6c19f1a2451f4e0e8b399bc74f2a507, type: 3}
 --- !u!61 &794216866
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -402,21 +403,21 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.024533272, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.92, y: 2.35}
+    oldSize: {x: 14.4, y: 10.8}
     newSize: {x: 0.25, y: 0.29}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 14.429558, y: 10.591597}
+  m_Size: {x: 14.4, y: 10.8}
   m_EdgeRadius: 0
 --- !u!1 &2076277660
 GameObject:

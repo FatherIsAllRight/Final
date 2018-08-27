@@ -4262,6 +4262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 942306652}
   - component: {fileID: 942306653}
+  - component: {fileID: 942306654}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -4276,7 +4277,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 942306651}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.09, y: -3.93, z: 0}
+  m_LocalPosition: {x: 0, y: -3.415, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 962501658}
@@ -4316,7 +4317,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 13
-  m_Sprite: {fileID: 21300000, guid: 7a3c8b94fa1f74fecb5d22a945aad0f4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc59c2fd4a7614f92b038631e8d43b19, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4326,6 +4327,23 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!95 &942306654
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 942306651}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5f6f7bfce21ba4416a10dbe821bf71b2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &962501657
 GameObject:
   m_ObjectHideFlags: 0
