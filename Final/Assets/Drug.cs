@@ -82,6 +82,7 @@ public class Drug : MonoBehaviour {
             {
                 NoteManager.Instance.notePageUnlock[drugType] = true;
                 NoteManager.Instance.Refresh(drugType);
+                NoteRecord.Instance.notePageRecord[drugType] = true;
             }
         }
             

@@ -30,7 +30,8 @@ public class NoteManager : MonoBehaviour {
 	void Start () {
         pageNum = 1;
         notePageUnlock = new bool[notePageList.Length];
-        notePageUnlock[1] = true;
+        for (int i = 0; i < notePageList.Length; i++)
+            notePageUnlock[i] = NoteRecord.Instance.notePageRecord[i];
         noteSprite = GetComponent<SpriteRenderer>();
         noteSprite.sprite = notePageList[1];
 	}
