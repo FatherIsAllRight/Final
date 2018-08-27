@@ -35,6 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4690257039007844}
+  - component: {fileID: 114566669893265396}
   m_Layer: 0
   m_Name: Hp
   m_TagString: Untagged
@@ -172,6 +173,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98117737e2ff3cd45acda829643a4bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114566669893265396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1511473496733974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe5f7170d5d74517a855017a02b103f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpMask: {fileID: 331757097122563388}
+  personObject: {fileID: 114638087282758066}
+  hpText: {fileID: 0}
 --- !u!114 &114638087282758066
 MonoBehaviour:
   m_ObjectHideFlags: 1

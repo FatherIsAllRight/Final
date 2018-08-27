@@ -5,10 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour {
 
-    private int enemyHpMax;
-    private int enemyHpCurrent;
-    private int heroHpMax;
-    private int heroHpCurrent;
     [SerializeField] float turnMaxTime;
     private float turnTime;
 
@@ -21,7 +17,8 @@ public class BattleManager : MonoBehaviour {
     [SerializeField] GameObject nextRoomButton;
 
     [SerializeField] GameObject[] Enemy;
-
+    //[SerializeField] GameObject heroHpText;
+    [SerializeField] GameObject enemyHpText;
     // Use this for initialization
     void Start () {
 
@@ -59,6 +56,7 @@ public class BattleManager : MonoBehaviour {
                     battleStart = false;
                     nextRoomButton.SetActive(true);
                     Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+                    enemyHpText.SetActive(false);
                 }
             }
         }
