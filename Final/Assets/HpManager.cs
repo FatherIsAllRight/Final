@@ -28,7 +28,7 @@ public class HpManager : MonoBehaviour {
 	void Update () {
         if(lastHp == personObject.hp)
             return;
-        UpdateHp();
+        //UpdateHp();
 	}
 
     public void UpdateHp()
@@ -38,6 +38,7 @@ public class HpManager : MonoBehaviour {
             hpText.gameObject.SetActive(false);
             gameObject.SetActive(false);
         }*/
+        Debug.Log("dafsdfsfasfs");
         float deltaX = ((float)personObject.hp / personObject.hpMax - 1) * 2.56f;
         hpMask.transform.localPosition = new Vector3(deltaX, 0, 0);
         hpText.text = personObject.hp.ToString() + " / " + personObject.hpMax.ToString();

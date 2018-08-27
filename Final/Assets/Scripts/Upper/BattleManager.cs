@@ -6,13 +6,16 @@ using UnityEngine.SceneManagement;
 public class BattleManager : MonoBehaviour {
 
     [SerializeField] float turnMaxTime;
+    [SerializeField] float turnAniTime;
     private float turnTime;
+    private bool aniTrigger = false;
+
 
     private bool moveTurn; //false--enemy;  true--hero
     public bool battleStart { get; private set; }
 
-    private PersonObject enemy;
-    [SerializeField] PersonObject hero;
+    [HideInInspector]public PersonObject enemy;
+    [SerializeField]public PersonObject hero;
 
     [SerializeField] GameObject nextRoomButton;
 
@@ -29,9 +32,23 @@ public class BattleManager : MonoBehaviour {
         if(battleStart)
         {
             turnTime += Time.deltaTime;
+            if(!aniTrigger && turnTime >= turnAniTime)
+            {
+                aniTrigger = true;
+                if(moveTurn)
+                {
+                    hero.GetComponentInChildren<Animator>().SetTrigger("Attack");
+
+                }
+                else
+                {
+                    hero.GetComponentInChildren<Animator>().SetTrigger("Hurt");
+                }
+            }
             if(turnTime >= turnMaxTime)
             {
                 turnTime = 0;
+                aniTrigger = false;
                 if (moveTurn)
                 {
                     Debug.Log("hero");
@@ -43,23 +60,7 @@ public class BattleManager : MonoBehaviour {
                 }
                 moveTurn = !moveTurn;
 
-                if (hero.isDead())
-                {
-                    // game over
-                    SceneManager.LoadScene(2);
-                    return;
-                }
-
-                if (enemy.isDead())
-                {
-                    Debug.Log(1);
-                    battleStart = false;
-                    //drug use
-                    DrugUse.Instance.ClearHand();
-                    nextRoomButton.SetActive(true);
-                    Destroy(GameObject.FindGameObjectWithTag("Enemy"));
-                    enemyHpText.SetActive(false);
-                }
+                CheckSomeoneDead();
             }
         }
 	}
@@ -71,5 +72,26 @@ public class BattleManager : MonoBehaviour {
         this.moveTurn = moveTurn;
         this.turnTime = 0;
         this.battleStart = true;
+    }
+
+    public void CheckSomeoneDead()
+    {
+        if (hero.isDead())
+        {
+            // game over
+            SceneManager.LoadScene(2);
+            return;
+        }
+
+        if (enemy.isDead())
+        {
+            Debug.Log(1);
+            battleStart = false;
+            //drug use
+            DrugUse.Instance.ClearHand();
+            nextRoomButton.SetActive(true);
+            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+            enemyHpText.SetActive(false);
+        }
     }
 }
