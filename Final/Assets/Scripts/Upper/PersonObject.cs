@@ -73,7 +73,7 @@ public class PersonObject : MonoBehaviour {
 
     public Skill[] skills;
     public int waitTurns;
-    private int lastSkillId;
+    [HideInInspector]public int lastSkillId;
 
     [SerializeField] float buffIconPositionX;
     [SerializeField] float buffIconPositionY;
@@ -111,8 +111,8 @@ public class PersonObject : MonoBehaviour {
         powerUpFactor = 2;
 
         waitTurns = 0;
-        lastSkillId = -1;
-
+        //lastSkillId = -1;
+        lastSkillId = personBehavior.selectSkill();
         buffIcon = new List<GameObject>();
 
         useMedicineAudio = GameObject.Find("UseMedicine").GetComponent<AudioSource>();
@@ -261,12 +261,15 @@ public class PersonObject : MonoBehaviour {
                 opponentObjectScript.AddDefenseDownTurns(skills[lastSkillId].defenseDownTurns);
                 opponentObjectScript.SetHealTurns(skills[lastSkillId].healTurns, skills[lastSkillId].healRestore);
                 opponentObjectScript.AddFrogTurns(skills[lastSkillId].frogTurns);
+
+                lastSkillId = personBehavior.selectSkill();
             }
         }
         else
         {
-            lastSkillId = personBehavior.selectSkill();
+            //lastSkillId = personBehavior.selectSkill();
             waitTurns += skills[lastSkillId].selfWaitTurns;
+
             if (waitTurns == 0)
             {
                 AddHp(skills[lastSkillId].selfHp);
@@ -288,7 +291,10 @@ public class PersonObject : MonoBehaviour {
                 opponentObjectScript.AddDefenseDownTurns(skills[lastSkillId].defenseDownTurns);
                 opponentObjectScript.SetHealTurns(skills[lastSkillId].healTurns, skills[lastSkillId].healRestore);
                 opponentObjectScript.AddFrogTurns(skills[lastSkillId].frogTurns);
+
+                lastSkillId = personBehavior.selectSkill();
             }
+
         }
     }
 
