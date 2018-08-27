@@ -51,11 +51,11 @@ public class BattleManager : MonoBehaviour {
                 aniTrigger = false;
                 if (moveTurn)
                 {
-                    Debug.Log("hero");
+                    //Debug.Log("hero");
                     hero.UseSkill(enemy);
                 }
                 else {
-                    Debug.Log("enemy");
+                    //Debug.Log("enemy");
                     enemy.UseSkill(hero);
                 }
                 moveTurn = !moveTurn;
@@ -85,7 +85,7 @@ public class BattleManager : MonoBehaviour {
 
         if (enemy.isDead())
         {
-            Debug.Log(1);
+            //Debug.Log(1);
             battleStart = false;
             //drug use
             DrugUse.Instance.ClearHand();
