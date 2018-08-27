@@ -5,6 +5,7 @@ using UnityEngine;
 public class Drug : MonoBehaviour {
     [HideInInspector] public int drugType;
     [SerializeField] Sprite[] drugList; //废药--0；青蛙--14  
+    [SerializeField] public GameObject hand;
 	// Use this for initialization
 	void Start () {
         drugType = -1;
@@ -18,8 +19,8 @@ public class Drug : MonoBehaviour {
     public void setDrug(int _drugType)
     {
         //drugType = _drugType;
-        //TODO add animation trigger?
         GetComponent<Animator>().SetTrigger("Shake");
+        GetComponent<BoxCollider2D>().enabled = true;
         switch (_drugType)
         {
             case 111:
@@ -59,9 +60,9 @@ public class Drug : MonoBehaviour {
                 drugType = 12;
                 break;
             default:
-                int a = drugType / 100;
-                int b = (drugType % 100) / 10;
-                int c = drugType % 10;
+                int a = _drugType / 100;
+                int b = (_drugType % 100) / 10;
+                int c = _drugType % 10;
                 if(a == 5 || b == 5 || c == 5)
                 {
                     drugType = 13;
@@ -86,6 +87,16 @@ public class Drug : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        
+        if (!UpperManager.Instance.DrugUseable())
+        {
+            hand.SetActive(false);
+            DrugUse.Instance.holdDrugType = -1;
+            DrugUse.Instance.drug = null;
+            return;
+        }
+        DrugUse.Instance.holdDrugType = drugType;
+        DrugUse.Instance.drug = this;
+        hand.SetActive(true);
+        hand.transform.position = transform.position + new Vector3(0.3f, -0.8f, 0f);
     }
 }

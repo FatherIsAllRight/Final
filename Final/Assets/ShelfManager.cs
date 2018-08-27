@@ -6,7 +6,7 @@ public class ShelfManager : MonoBehaviour {
     private static ShelfManager instance = null;
     public static ShelfManager Instance { get { return instance; } }
     public GameObject[] shelfBottleList;
-    [HideInInspector] public int bottleUsed;
+    [HideInInspector] public int shelfUsed;
     void Awake()
     {
         if (instance != null && instance != this)
@@ -20,7 +20,7 @@ public class ShelfManager : MonoBehaviour {
     }
 	// Use this for initialization
 	void Start () {
-        bottleUsed = 0;
+        shelfUsed = 0;
 	}
 	
 	// Update is called once per frame

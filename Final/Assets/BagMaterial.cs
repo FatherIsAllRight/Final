@@ -47,6 +47,12 @@ public class BagMaterial : MonoBehaviour {
 
     private void OnMouseDown()
     {
+        /*
+        if(!UpperManager.Instance.DrugMakable())
+        {
+            return;
+        }
+        */
         if(materialNum == 0 || PotManager.Instance.gridUsed == PotManager.Instance.gridList.Length)
         {
             return;

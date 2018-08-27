@@ -54,6 +54,8 @@ public class BattleManager : MonoBehaviour {
                 {
                     Debug.Log(1);
                     battleStart = false;
+                    //drug use
+                    DrugUse.Instance.ClearHand();
                     nextRoomButton.SetActive(true);
                     Destroy(GameObject.FindGameObjectWithTag("Enemy"));
                     enemyHpText.SetActive(false);

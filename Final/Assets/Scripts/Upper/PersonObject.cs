@@ -293,4 +293,20 @@ public class PersonObject : MonoBehaviour {
             this.defenseDownTurns = 0;
         }
     }
+
+    private void OnMouseDown()
+    {
+        if(DrugUse.Instance.drug != null)
+        {
+            switch (DrugUse.Instance.holdDrugType)
+            {
+                //TODO
+                case 0:
+                    break;
+                default:
+                    break;
+            }
+            DrugUse.Instance.UseThisDrug();
+        }
+    }
 }
