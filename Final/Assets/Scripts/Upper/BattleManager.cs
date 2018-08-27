@@ -37,12 +37,24 @@ public class BattleManager : MonoBehaviour {
                 aniTrigger = true;
                 if(moveTurn)
                 {
-                    hero.GetComponentInChildren<Animator>().SetTrigger("Attack");
-
+                    if(hero.stunTurns <= 0)
+                        hero.GetComponentInChildren<Animator>().SetTrigger("Attack");
+                    if (enemy.waitTurns > 0 || hero.stunTurns > 0)
+                        return;
+                    enemy.GetComponentInChildren<Animator>().SetTrigger("Hurt");
                 }
                 else
                 {
+                    string triggerName = enemy.lastSkillId.ToString();
+                    //Debug.Log(triggerName);
+                    enemy.GetComponentInChildren<Animator>().SetTrigger(triggerName);
+                    Debug.Log("turn   " + enemy.waitTurns);
+                    Debug.Log("skillId  " + enemy.lastSkillId);
+                    if (enemy.lastSkillId == 3 && enemy.waitTurns != 1)
+                        return;
                     hero.GetComponentInChildren<Animator>().SetTrigger("Hurt");
+
+
                 }
             }
             if(turnTime >= turnMaxTime)

@@ -6,6 +6,7 @@ public class Cheast : MonoBehaviour {
 
     [SerializeField] GameObject nextRoomButton;
     private bool isOpen;
+    [SerializeField] Sprite cheastOpened;
 
     // Use this for initialization
     void Start () {
@@ -30,6 +31,7 @@ public class Cheast : MonoBehaviour {
             materialList[5] = Random.Range(4, 7);
             Bag.Instance.GetMaterial(materialList);
             nextRoomButton.SetActive(true);
+            GetComponent<SpriteRenderer>().sprite = cheastOpened;
             isOpen = true;
         }
     }

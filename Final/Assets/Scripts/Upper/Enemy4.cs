@@ -37,7 +37,7 @@ public class Enemy4 : PersonBehavior {
 
     public override int selectSkill()
     {
-        return Random.Range(0, 4);
+        return Random.Range(3, 4);
     }
 
     public override void dropMaterial()
