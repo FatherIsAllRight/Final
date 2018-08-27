@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hero : MonoBehaviour {
+public class Hero : PersonBehavior {
 
     private PersonObject myPersonObjectScript;
 
@@ -20,4 +20,14 @@ public class Hero : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public override int selectSkill()
+    {
+        return 0;
+    }
+
+    public override void dropMaterial()
+    {
+        
+    }
 }

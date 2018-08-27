@@ -8,6 +8,7 @@ TagManager:
   - Hero
   - BattleManager
   - NextRoomButton
+  - BuffIcon
   layers:
   - Default
   - TransparentFX

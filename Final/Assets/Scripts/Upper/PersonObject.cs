@@ -67,7 +67,10 @@ public class PersonObject : MonoBehaviour {
     [SerializeField] GameObject powerDownIcon;
     [SerializeField] GameObject defenseUpIcon;
     [SerializeField] GameObject defenseDownIcon;
+    private List<GameObject> buffIcon;
     private float buffIconHeight = -0.8f;
+
+    [SerializeField] PersonBehavior personBehavior;
 
     // Use this for initialization
     void Start()
@@ -84,40 +87,52 @@ public class PersonObject : MonoBehaviour {
 
         waitTurns = 0;
         lastSkillId = -1;
+
+        buffIcon = new List<GameObject>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        int buffIconCount = 0;
-        if(fireTurns > 0)
+        drawBuffIcon();
+    }
+
+    public void drawBuffIcon()
+    {
+        for (int i = 0; i < buffIcon.Count; i++)
         {
-            Instantiate(fireIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0));
+            Destroy(buffIcon[i]);
+        }
+        buffIcon.Clear();
+        int buffIconCount = 0;
+        if (fireTurns > 0)
+        {
+            buffIcon.Add(Instantiate(fireIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
             buffIconCount++;
         }
         if (stunTurns > 0)
         {
-            Instantiate(stunIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0));
+            buffIcon.Add(Instantiate(stunIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
             buffIconCount++;
         }
         if (powerUpTurns > 0)
         {
-            Instantiate(powerUpIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0));
+            buffIcon.Add(Instantiate(powerUpIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
             buffIconCount++;
         }
         if (powerDownTurns > 0)
         {
-            Instantiate(powerDownIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0));
+            buffIcon.Add(Instantiate(powerDownIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
             buffIconCount++;
         }
         if (defenseUpTurns > 0)
         {
-            Instantiate(defenseUpIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0));
+            buffIcon.Add(Instantiate(defenseUpIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
             buffIconCount++;
         }
         if (defenseDownTurns > 0)
         {
-            Instantiate(defenseDownIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0));
+            buffIcon.Add(Instantiate(defenseDownIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
             buffIconCount++;
         }
     }
@@ -192,7 +207,7 @@ public class PersonObject : MonoBehaviour {
         }
         else
         {
-            lastSkillId = Random.Range(0, skills.Length);
+            lastSkillId = personBehavior.selectSkill();
             waitTurns += skills[lastSkillId].selfWaitTurns;
             if (waitTurns == 0)
             {
@@ -222,6 +237,7 @@ public class PersonObject : MonoBehaviour {
         {
             this.hp = this.hpMax;
         }
+        personBehavior.dropMaterial();
     }
 
     public void AddFireTurns(int fireTurns)

@@ -194,6 +194,7 @@ MonoBehaviour:
     type: 2}
   defenseDownIcon: {fileID: 1349972019337412, guid: 8dba03e29ca607c468e6c884663f29c5,
     type: 2}
+  personBehavior: {fileID: 114096222427259476}
 --- !u!114 &114096222427259476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -216,9 +217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe5f7170d5d74517a855017a02b103f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpType: 0
   hpMask: {fileID: 331016704626385350}
   personObject: {fileID: 114032247028030188}
-  hpText: {fileID: 0}
 --- !u!212 &212529074324775534
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -21,7 +21,14 @@ public class Cheast : MonoBehaviour {
     {
         if(!isOpen)
         {
-            Debug.Log("Get some Medicine");
+            int[] materialList = new int[6];
+            materialList[0] = Random.Range(12, 16);
+            materialList[1] = Random.Range(3, 6);
+            materialList[2] = 0;
+            materialList[3] = Random.Range(3, 7);
+            materialList[4] = 0;
+            materialList[5] = Random.Range(4, 7);
+            Bag.Instance.GetMaterial(materialList);
             nextRoomButton.SetActive(true);
             isOpen = true;
         }

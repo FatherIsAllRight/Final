@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GlobalNextScene : MonoBehaviour {
 
+    [SerializeField] AudioSource Bgm;
     [SerializeField] SpriteRenderer Mask;
     [SerializeField] float MaskTime;
     [SerializeField] int NextScene;
@@ -19,6 +20,7 @@ public class GlobalNextScene : MonoBehaviour {
 	void Update () {
         if(phrase == 0)
         {
+            Bgm.volume += 1.0f * Time.deltaTime / MaskTime;
             Mask.color = new Color(Mask.color.r, Mask.color.g, Mask.color.b, Mask.color.a - 1 * Time.deltaTime / MaskTime);
             if(Mask.color.a < 0)
             {
@@ -27,6 +29,7 @@ public class GlobalNextScene : MonoBehaviour {
         }
         else if(phrase == 2)
         {
+            Bgm.volume -= 1.1f * Time.deltaTime / MaskTime;
             Mask.color = new Color(Mask.color.r, Mask.color.g, Mask.color.b, Mask.color.a + 1 * Time.deltaTime / MaskTime);
             if (Mask.color.a > 1)
             {
