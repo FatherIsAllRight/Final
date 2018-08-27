@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PersonObject : MonoBehaviour {
 
@@ -94,6 +95,8 @@ public class PersonObject : MonoBehaviour {
     private AudioSource useFrogAudio;
     private AudioSource useBombAudio;
 
+    public Animator drugEffect;
+
     // Use this for initialization
     void Start()
     {
@@ -138,41 +141,49 @@ public class PersonObject : MonoBehaviour {
         if (fireTurns > 0)
         {
             buffIcon.Add(Instantiate(fireIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
+            buffIcon[buffIconCount].GetComponentInChildren<Text>().text = fireTurns.ToString();
             buffIconCount++;
         }
         if (stunTurns > 0)
         {
             buffIcon.Add(Instantiate(stunIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
+            buffIcon[buffIconCount].GetComponentInChildren<Text>().text = stunTurns.ToString();
             buffIconCount++;
         }
         if (powerUpTurns > 0)
         {
             buffIcon.Add(Instantiate(powerUpIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
+            buffIcon[buffIconCount].GetComponentInChildren<Text>().text = powerUpTurns.ToString();
             buffIconCount++;
         }
         if (powerDownTurns > 0)
         {
             buffIcon.Add(Instantiate(powerDownIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
+            buffIcon[buffIconCount].GetComponentInChildren<Text>().text = powerDownTurns.ToString();
             buffIconCount++;
         }
         if (defenseUpTurns > 0)
         {
             buffIcon.Add(Instantiate(defenseUpIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
+            buffIcon[buffIconCount].GetComponentInChildren<Text>().text = defenseUpTurns.ToString();
             buffIconCount++;
         }
         if (defenseDownTurns > 0)
         {
             buffIcon.Add(Instantiate(defenseDownIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
+            buffIcon[buffIconCount].GetComponentInChildren<Text>().text = defenseDownTurns.ToString();
             buffIconCount++;
         }
         if (healTurns > 0)
         {
             buffIcon.Add(Instantiate(healIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
+            buffIcon[buffIconCount].GetComponentInChildren<Text>().text = healTurns.ToString();
             buffIconCount++;
         }
         if (frogTurns > 0)
         {
             buffIcon.Add(Instantiate(frogIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
+            buffIcon[buffIconCount].GetComponentInChildren<Text>().text = frogTurns.ToString();
             buffIconCount++;
         }
     }
@@ -457,16 +468,19 @@ public class PersonObject : MonoBehaviour {
                 case 1:
                     AddHp(40);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 2:
                     AddHp(-25);
                     AddFireTurns(-99);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 3:
                     AddHp(20);
                     SetHealTurns(5, 10);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 4:
                     AddFireTurns(-99);
@@ -476,54 +490,70 @@ public class PersonObject : MonoBehaviour {
                     AddFrogTurns(-99);
                     SetHealTurns(5, 10);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
+                    GetComponentInChildren<Animator>().enabled = true;
                     break;
                 case 5:
                     SetHealTurns(5, 20);
                     //useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 6:
                     AddHp(-50);
                     useBombAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 7:
                     SetHealTurns(8, 15);
                     //useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 8:
                     AddHp(999);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 9:
                     AddFireTurns(5);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 10:
                     AddFireTurns(-99);
                     SetHealTurns(5, 10);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 11:
                     battleManager.enemy.AddFrogTurns(3);
                     battleManager.hero.AddFrogTurns(3);
+                    battleManager.enemy.drugEffect.SetTrigger("Show");
+                    battleManager.hero.drugEffect.SetTrigger("Show");
+                    battleManager.AllChange2Frog();
                     useFrogAudio.Play();
                     break;
                 case 12:
                     AddPowerUpTurns(99);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
                 case 13:
                     battleManager.enemy.AddHp((int)(-battleManager.enemy.hpMax * 0.8f));
                     battleManager.hero.AddHp((int)(-battleManager.hero.hpMax * 0.8f));
+                    battleManager.enemy.drugEffect.SetTrigger("Show");
+                    battleManager.hero.drugEffect.SetTrigger("Show");
                     useMedicineAudio.Play();
                     break;
                 case 14:
                     int[] temp = { 0, 0, 0, 1, 0, 0 };
                     Bag.Instance.GetMaterial(temp);
                     useFrogAudio.Play();
+                    //drugEffect.SetTrigger("Show");
                     break;
                 default:
                     AddHp(-1);
                     useMedicineAudio.Play();
+                    drugEffect.SetTrigger("Show");
                     break;
             }
         }

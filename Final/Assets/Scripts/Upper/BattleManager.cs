@@ -22,6 +22,8 @@ public class BattleManager : MonoBehaviour {
     [SerializeField] GameObject[] Enemy;
     //[SerializeField] GameObject heroHpText;
     [SerializeField] GameObject enemyHpText;
+    [SerializeField] Sprite frogHero;
+    [SerializeField] Sprite frogEnemy;
     // Use this for initialization
     void Start () {
 
@@ -37,38 +39,47 @@ public class BattleManager : MonoBehaviour {
                 aniTrigger = true;
                 if(moveTurn)
                 {
-                    if(hero.stunTurns <= 0)
+                    if(hero.stunTurns <= 0 && hero.GetComponentInChildren<Animator>().enabled)
                         hero.GetComponentInChildren<Animator>().SetTrigger("Attack");
-                    if (enemy.waitTurns > 0 || hero.stunTurns > 0)
+                    if (enemy.waitTurns > 0 || hero.stunTurns > 0 || hero.frogTurns > 0)
                         return;
-                    enemy.GetComponentInChildren<Animator>().SetTrigger("Hurt");
+                    if(enemy.GetComponentInChildren<Animator>().enabled)
+                        enemy.GetComponentInChildren<Animator>().SetTrigger("Hurt");
                 }
                 else
                 {
                     string triggerName = enemy.lastSkillId.ToString();
                     //Debug.Log(triggerName);
-                    enemy.GetComponentInChildren<Animator>().SetTrigger(triggerName);
-                    Debug.Log("turn   " + enemy.waitTurns);
-                    Debug.Log("skillId  " + enemy.lastSkillId);
-                    if (enemy.lastSkillId == 3 && enemy.waitTurns != 1)
+                    if(enemy.GetComponentInChildren<Animator>().enabled)
+                        enemy.GetComponentInChildren<Animator>().SetTrigger(triggerName);
+                    if (enemy.frogTurns > 0 || (enemy.lastSkillId == 3 && enemy.waitTurns != 1))
                         return;
-                    hero.GetComponentInChildren<Animator>().SetTrigger("Hurt");
-
-
+                    if(hero.GetComponentInChildren<Animator>().enabled)
+                        hero.GetComponentInChildren<Animator>().SetTrigger("Hurt");
                 }
             }
             if(turnTime >= turnMaxTime)
             {
                 turnTime = 0;
                 aniTrigger = false;
+                    
+                    
                 if (moveTurn)
                 {
-                    //Debug.Log("hero");
+                    Debug.Log("hero");
                     hero.UseSkill(enemy);
+                    if (hero.frogTurns <= 0)
+                    {
+                        hero.GetComponentInChildren<Animator>().enabled = true;
+                    }
                 }
                 else {
-                    //Debug.Log("enemy");
+                    Debug.Log("enemy");
                     enemy.UseSkill(hero);
+                    if (enemy.frogTurns <= 0)
+                    {
+                        enemy.GetComponentInChildren<Animator>().enabled = true;
+                    }
                 }
                 moveTurn = !moveTurn;
 
@@ -106,5 +117,13 @@ public class BattleManager : MonoBehaviour {
             Destroy(GameObject.FindGameObjectWithTag("Enemy"));
             enemyHpText.SetActive(false);
         }
+    }
+
+    public void AllChange2Frog()
+    {
+        hero.GetComponentInChildren<Animator>().enabled = false;
+        hero.GetComponentInChildren<SpriteRenderer>().sprite = frogHero;
+        enemy.GetComponentInChildren<Animator>().enabled = false;
+        enemy.GetComponentInChildren<SpriteRenderer>().sprite = frogEnemy;
     }
 }
