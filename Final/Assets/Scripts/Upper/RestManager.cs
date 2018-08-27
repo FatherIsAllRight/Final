@@ -20,7 +20,7 @@ public class RestManager : MonoBehaviour {
 
     public void Init()
     {
-        hero.Add(restore, 0, 0, 0, 0, 0, 0);
+        hero.AddHp(restore);
         nextRoomButton.SetActive(true);
     }
 }

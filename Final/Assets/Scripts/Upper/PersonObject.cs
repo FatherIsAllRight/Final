@@ -24,29 +24,28 @@ public class PersonObject : MonoBehaviour {
         public int selfDefenseUpTurns = 0;
         public int selfDefenseDownTurns = 0;
 
-        public Skill(int selfWaitTurns, int hp, int fireTurns, int stunTurns, int powerUpTurns, int powerDownTurns, int defenseUpTurns, int defenseDownTurns,
-            int selfHp, int selfFireTurns, int selfStunTurns, int selfPowerUpTurns, int selfPowerDownTurns, int selfDefenseUpTurns, int selfDefenseDownTurns)
+        public Skill()
         {
-            this.selfWaitTurns = selfWaitTurns;
-            this.hp = hp;
-            this.fireTurns = fireTurns;
-            this.stunTurns = stunTurns;
-            this.powerUpTurns = powerUpTurns;
-            this.powerDownTurns = powerDownTurns;
-            this.defenseUpTurns = defenseUpTurns;
-            this.defenseDownTurns = defenseDownTurns;
-            this.selfHp = selfHp;
-            this.selfFireTurns = selfFireTurns;
-            this.selfStunTurns = selfStunTurns;
-            this.selfPowerUpTurns = selfPowerUpTurns;
-            this.selfPowerDownTurns = selfPowerDownTurns;
-            this.selfDefenseUpTurns = selfDefenseUpTurns;
-            this.selfDefenseDownTurns = selfDefenseDownTurns;
+            this.selfWaitTurns = 0;
+            this.hp = 0;
+            this.fireTurns = 0;
+            this.stunTurns = 0;
+            this.powerUpTurns = 0;
+            this.powerDownTurns = 0;
+            this.defenseUpTurns = 0;
+            this.defenseDownTurns = 0;
+            this.selfHp = 0;
+            this.selfFireTurns = 0;
+            this.selfStunTurns = 0;
+            this.selfPowerUpTurns = 0;
+            this.selfPowerDownTurns = 0;
+            this.selfDefenseUpTurns = 0;
+            this.selfDefenseDownTurns = 0;
         }
     }
 
     [SerializeField] public int hpMax;
-    private int hp;
+    public int hp;
     private int fireTurns;
     private int stunTurns;
     private int powerUpTurns;
@@ -127,8 +126,21 @@ public class PersonObject : MonoBehaviour {
             waitTurns--;
             if (waitTurns == 0)
             {
-                Add(skills[lastSkillId].selfHp, skills[lastSkillId].selfFireTurns, skills[lastSkillId].selfStunTurns, skills[lastSkillId].selfPowerUpTurns, skills[lastSkillId].selfPowerDownTurns, skills[lastSkillId].selfDefenseUpTurns, skills[lastSkillId].selfDefenseDownTurns);
-                opponentObjectScript.Add(skills[lastSkillId].hp, skills[lastSkillId].fireTurns, skills[lastSkillId].stunTurns, skills[lastSkillId].powerUpTurns, skills[lastSkillId].powerDownTurns, skills[lastSkillId].defenseUpTurns, skills[lastSkillId].defenseDownTurns);
+                AddHp(skills[lastSkillId].selfHp);
+                AddFireTurns(skills[lastSkillId].selfFireTurns);
+                AddStunTurns(skills[lastSkillId].selfStunTurns);
+                AddPowerUpTurns(skills[lastSkillId].selfPowerUpTurns);
+                AddPowerDownTurns(skills[lastSkillId].selfPowerDownTurns);
+                AddDefenseUpTurns(skills[lastSkillId].selfDefenseUpTurns);
+                AddPowerDownTurns(skills[lastSkillId].selfDefenseDownTurns);
+
+                opponentObjectScript.AddHp(skills[lastSkillId].hp);
+                opponentObjectScript.AddFireTurns(skills[lastSkillId].fireTurns);
+                opponentObjectScript.AddStunTurns(skills[lastSkillId].stunTurns);
+                opponentObjectScript.AddPowerUpTurns(skills[lastSkillId].powerUpTurns);
+                opponentObjectScript.AddPowerDownTurns(skills[lastSkillId].powerDownTurns);
+                opponentObjectScript.AddDefenseUpTurns(skills[lastSkillId].defenseUpTurns);
+                opponentObjectScript.AddPowerDownTurns(skills[lastSkillId].defenseDownTurns);
             }
         }
         else
@@ -137,46 +149,82 @@ public class PersonObject : MonoBehaviour {
             waitTurns += skills[lastSkillId].selfWaitTurns;
             if (waitTurns == 0)
             {
-                Add(skills[lastSkillId].selfHp, skills[lastSkillId].selfFireTurns, skills[lastSkillId].selfStunTurns, skills[lastSkillId].selfPowerUpTurns, skills[lastSkillId].selfPowerDownTurns, skills[lastSkillId].selfDefenseUpTurns, skills[lastSkillId].selfDefenseDownTurns);
-                opponentObjectScript.Add(skills[lastSkillId].hp, skills[lastSkillId].fireTurns, skills[lastSkillId].stunTurns, skills[lastSkillId].powerUpTurns, skills[lastSkillId].powerDownTurns, skills[lastSkillId].defenseUpTurns, skills[lastSkillId].defenseDownTurns);
+                AddHp(skills[lastSkillId].selfHp);
+                AddFireTurns(skills[lastSkillId].selfFireTurns);
+                AddStunTurns(skills[lastSkillId].selfStunTurns);
+                AddPowerUpTurns(skills[lastSkillId].selfPowerUpTurns);
+                AddPowerDownTurns(skills[lastSkillId].selfPowerDownTurns);
+                AddDefenseUpTurns(skills[lastSkillId].selfDefenseUpTurns);
+                AddPowerDownTurns(skills[lastSkillId].selfDefenseDownTurns);
+
+                opponentObjectScript.AddHp(skills[lastSkillId].hp);
+                opponentObjectScript.AddFireTurns(skills[lastSkillId].fireTurns);
+                opponentObjectScript.AddStunTurns(skills[lastSkillId].stunTurns);
+                opponentObjectScript.AddPowerUpTurns(skills[lastSkillId].powerUpTurns);
+                opponentObjectScript.AddPowerDownTurns(skills[lastSkillId].powerDownTurns);
+                opponentObjectScript.AddDefenseUpTurns(skills[lastSkillId].defenseUpTurns);
+                opponentObjectScript.AddPowerDownTurns(skills[lastSkillId].defenseDownTurns);
             }
         }
     }
 
-    public void Add(int hp, int fireTurns, int stunTurns, int powerUpTurns, int powerDownTurns, int defenseUpTurns, int defenseDownTurns)
+    public void AddHp(int hp)
     {
         this.hp += hp;
-        this.fireTurns += fireTurns;
-        this.stunTurns += stunTurns;
-        this.powerUpTurns += powerUpTurns;
-        this.powerDownTurns += powerDownTurns;
-        this.defenseUpTurns += defenseUpTurns;
-        this.defenseDownTurns += defenseDownTurns;
-
-        if(this.hp > this.hpMax)
+        if (this.hp > this.hpMax)
         {
             this.hp = this.hpMax;
         }
+    }
+
+    public void AddFireTurns(int fireTurns)
+    {
+        this.fireTurns += fireTurns;
         if (this.fireTurns < 0)
         {
             this.fireTurns = 0;
         }
+    }
+
+    public void AddStunTurns(int stunTurns)
+    {
+        this.stunTurns += stunTurns;
         if (this.stunTurns < 0)
         {
             this.stunTurns = 0;
         }
+    }
+
+    public void AddPowerUpTurns(int powerUpTurns)
+    {
+        this.powerUpTurns += powerUpTurns;
         if (this.powerUpTurns < 0)
         {
             this.powerUpTurns = 0;
         }
+    }
+
+    public void AddPowerDownTurns(int powerDownTurns)
+    {
+        this.powerDownTurns += powerDownTurns;
         if (this.powerDownTurns < 0)
         {
             this.powerDownTurns = 0;
         }
+    }
+
+    public void AddDefenseUpTurns(int defenseUpTurns)
+    {
+        this.defenseUpTurns += defenseUpTurns;
         if (this.defenseUpTurns < 0)
         {
             this.defenseUpTurns = 0;
         }
+    }
+
+    public void AddDefenseDownTurns(int defenseDownTurns)
+    {
+        this.defenseDownTurns += defenseDownTurns;
         if (this.defenseDownTurns < 0)
         {
             this.defenseDownTurns = 0;

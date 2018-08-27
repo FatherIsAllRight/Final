@@ -11,7 +11,9 @@ public class Enemy1 : MonoBehaviour {
     {
         myPersonObjectScript = GetComponent<PersonObject>();
         myPersonObjectScript.skills = new PersonObject.Skill[1];
-        myPersonObjectScript.skills[0] = new PersonObject.Skill(0, -20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+        myPersonObjectScript.skills[0] = new PersonObject.Skill();
+        myPersonObjectScript.skills[0].hp = -20;
     }
 
     // Update is called once per frame
