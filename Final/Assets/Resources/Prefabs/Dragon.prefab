@@ -260,7 +260,7 @@ MonoBehaviour:
   lastSkillId: 0
   buffIconPositionX: 0
   buffIconPositionY: 0
-  fireIcon: {fileID: 1939350143442260, guid: 2507ace12bb34ba42a025890e6280535, type: 2}
+  fireIcon: {fileID: 1939350143442260, guid: dbbe51384f766734886a2eecfed435d1, type: 2}
   stunIcon: {fileID: 1581155634488050, guid: 2980dab35a3fe8949a8a0c9605275901, type: 2}
   powerUpIcon: {fileID: 1038983363827872, guid: 4972e9aa99e52674d9d7fa38b628ddcb,
     type: 2}
