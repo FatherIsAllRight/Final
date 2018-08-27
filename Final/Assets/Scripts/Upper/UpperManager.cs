@@ -39,7 +39,7 @@ public class UpperManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         currentRoom = 0;
-        roomsType = new int[10] {-1, 1, -3, -99, -99, -99, -99, -99, -2, 3};
+        roomsType = new int[10] {-1, 0, -3, -99, -99, -99, -99, -99, -2, 3};
         int[] a = { -3, -2, 1, 2, 2 };
         int[] b = a.OrderBy(x => Guid.NewGuid()).ToArray();
         for(int i = 0; i < b.Length; i++)
@@ -96,14 +96,16 @@ public class UpperManager : MonoBehaviour {
                 {
                     case -1:
                         break;
-                    case 0:
-                    case 1:
-                        roomIcons[currentRoom - 1].GetComponent<SpriteRenderer>().sprite = roomIconsSprite[1];
-                        break;
                     case -2:
-                        roomIcons[currentRoom - 1].GetComponent<SpriteRenderer>().sprite = roomIconsSprite[1];
+                        roomIcons[currentRoom - 1].GetComponent<SpriteRenderer>().sprite = roomIconsSprite[3];
                         break;
                     case -3:
+                        roomIcons[currentRoom - 1].GetComponent<SpriteRenderer>().sprite = roomIconsSprite[2];
+                        break;
+                    case 4:
+                        roomIcons[currentRoom - 1].GetComponent<SpriteRenderer>().sprite = roomIconsSprite[4];
+                        break;
+                    default:
                         roomIcons[currentRoom - 1].GetComponent<SpriteRenderer>().sprite = roomIconsSprite[1];
                         break;
                 }
