@@ -22,6 +22,8 @@ public class DrugUse : MonoBehaviour {
     }
     public void UseThisDrug()
     {
+        if (drug == null)
+            return;
         drug.GetComponent<SpriteRenderer>().sprite = null;
         Debug.Log("Use drug type : " + drug.drugType.ToString());
         drug.drugType = -1;

@@ -237,6 +237,11 @@ public class PersonObject : MonoBehaviour {
         {
             this.hp = this.hpMax;
         }
+        if(this.hp <= 0)
+        {
+            GameObject.Find("BattleManager").GetComponent<BattleManager>().CheckSomeoneDead();
+        }
+        GetComponentInChildren<HpManager>().UpdateHp();
         personBehavior.dropMaterial();
     }
 
@@ -298,15 +303,66 @@ public class PersonObject : MonoBehaviour {
     {
         if(DrugUse.Instance.drug != null)
         {
+            DrugUse.Instance.UseThisDrug();
             switch (DrugUse.Instance.holdDrugType)
             {
                 //TODO
-                case 0:
+                case 1:
+                    AddHp(40);
+                    break;
+                case 2:
+                    AddHp(-25);
+                    AddFireTurns(-99);
+                    break;
+                case 3:
+                    AddHp(20);
+                    //AddHpByTurn(5, 10);
+                    break;
+                case 4:
+                    AddFireTurns(-99);
+                    AddStunTurns(-99);
+                    AddPowerDownTurns(-99);
+                    AddDefenseDownTurns(-99);
+                    //AddHpByTurn(5, 10);
+                    break;
+                case 5:
+                    //AddHpByTurn(5, 20);
+                    break;
+                case 6:
+                    AddHp(-50);
+                    break;
+                case 7:
+                    //AddHpByTurn(8, 15);
+                    break;
+                case 8:
+                    AddHp(99);
+                    break;
+                case 9:
+                    AddFireTurns(5);
+                    break;
+                case 10:
+                    AddFireTurns(-99);
+                    //AddHpByTurn(5, 10);
+                    break;
+                case 11:
+                    //AddFrogTurn(3);
+                    break;
+                case 12:
+                    AddPowerUpTurns(99);
+                    break;
+                case 13:
+                    BattleManager battleManager = GameObject.Find("BattleManager").GetComponent<BattleManager>();
+                    battleManager.enemy.AddHp((int)(-battleManager.enemy.hpMax * 0.8f));
+                    battleManager.hero.AddHp((int)(-battleManager.hero.hpMax * 0.8f));
+                    break;
+                case 14:
+                    int[] temp = { 0, 0, 0, 1, 0, 0 };
+                    Bag.Instance.GetMaterial(temp);
                     break;
                 default:
+                    AddHp(-1);
                     break;
             }
-            DrugUse.Instance.UseThisDrug();
         }
     }
 }
