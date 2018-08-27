@@ -11,6 +11,7 @@ public class PotSpoon : MonoBehaviour {
     private AnimatorStateInfo cookAniInfo;
     private bool shine;
     [SerializeField] Animator glowAni;
+    [SerializeField] GameObject fire;
     // Use this for initialization
 	void Start () {
         cook = false;
@@ -35,7 +36,7 @@ public class PotSpoon : MonoBehaviour {
                     if (tempDrug.drugType == -1)
                     {
                         tempDrug.setDrug(drugType);
-                        ShelfManager.Instance.bottleUsed++;
+                        ShelfManager.Instance.shelfUsed++;
                         ShelfManager.Instance.shelfBottleList[i].GetComponent<Animator>().SetTrigger("Shake");
                         glowAni.transform.position = ShelfManager.Instance.shelfBottleList[i].transform.position;
                         glowAni.SetTrigger("Glow");
@@ -52,11 +53,19 @@ public class PotSpoon : MonoBehaviour {
             }
 
         }
+        if (UpperManager.Instance.DrugMakable())
+        {
+            fire.SetActive(true);
+        }
+        else
+            fire.SetActive(false);
 	}
 
     private void OnMouseDown()
     {
-        if(PotManager.Instance.gridUsed == PotManager.Instance.gridList.Length && ShelfManager.Instance. bottleUsed < ShelfManager.Instance.shelfBottleList.Length)
+        if (!UpperManager.Instance.DrugMakable())
+            return;
+        if(PotManager.Instance.gridUsed == PotManager.Instance.gridList.Length && ShelfManager.Instance. shelfUsed < ShelfManager.Instance.shelfBottleList.Length)
         {
             List<int> materialList = new List<int>();
             int l = PotManager.Instance.gridList.Length;

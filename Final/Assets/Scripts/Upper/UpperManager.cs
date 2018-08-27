@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UpperManager : MonoBehaviour {
-
+    private static UpperManager instance = null;
+    public static UpperManager Instance { get { return instance; } }
     [SerializeField] GameObject BattleManager;
     [SerializeField] GameObject TreasureManager;
     [SerializeField] GameObject RestManager;
@@ -20,6 +21,18 @@ public class UpperManager : MonoBehaviour {
     [SerializeField] Sprite[] roomIconsSprite;
     private int currentRoom;
     private int[] roomsType; // -1 start; >= 0 monster; -2 rest; -3 treasure
+
+    void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     // Use this for initialization
     void Start () {
@@ -107,7 +120,7 @@ public class UpperManager : MonoBehaviour {
         nextRoom = 1;
     }
 
-    public bool medicineMakable()
+    public bool DrugMakable()
     {
         if(BattleManager.GetComponent<BattleManager>().battleStart)
         {
@@ -119,6 +132,15 @@ public class UpperManager : MonoBehaviour {
             return true;
         }
 
+        return false;
+    }
+
+    public bool DrugUseable()
+    {
+        if (BattleManager.GetComponent<BattleManager>().battleStart)
+        {
+            return true;
+        }
         return false;
     }
 }

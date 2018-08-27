@@ -7,7 +7,8 @@ public class DrugUse : MonoBehaviour {
     private static DrugUse instance = null;
     public static DrugUse Instance { get { return instance; } }
     [HideInInspector] public int holdDrugType;
-    private bool hold;
+    //[HideInInspector] public bool hold;
+    [HideInInspector] public Drug drug;
     void Awake()
     {
         if (instance != null && instance != this)
@@ -19,10 +20,27 @@ public class DrugUse : MonoBehaviour {
             instance = this;
         }
     }
+    public void UseThisDrug()
+    {
+        drug.GetComponent<SpriteRenderer>().sprite = null;
+        Debug.Log("Use drug type : " + drug.drugType.ToString());
+        drug.drugType = -1;
+        drug.hand.SetActive(false);
+        ShelfManager.Instance.shelfUsed--;
+    }
 
+    public void ClearHand()
+    {
+        if (drug == null)
+            return;
+        drug.hand.SetActive(false);
+        drug = null;
+    }
+    /*
     public void HoldDrug(int _drugType)
     {
         holdDrugType = _drugType;
-        hold = true;
+        //hold = true;
     }
+    */
 }

@@ -1,20 +1,18 @@
 ﻿<Properties StartupConfiguration="{66FCFD4F-CBD4-B53A-792D-76CD80E1A313}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/HpManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Upper/UpperManager.cs">
     <Files>
       <File FileName="Assets/PotManager.cs" Line="25" Column="6" />
       <File FileName="Assets/BagMaterial.cs" Line="6" Column="25" />
       <File FileName="Assets/PotMaterial.cs" Line="26" Column="6" />
-      <File FileName="Assets/PotSpoon.cs" Line="35" Column="48" />
-      <File FileName="Assets/Drug.cs" Line="24" Column="10" />
-      <File FileName="Assets/ShelfManager.cs" Line="19" Column="10" />
-      <File FileName="Assets/NoteManager.cs" Line="49" Column="10" />
-      <File FileName="Assets/NotePageDown.cs" Line="12" Column="1" />
-      <File FileName="Assets/NotePageUp.cs" Line="12" Column="1" />
-      <File FileName="Assets/Bag.cs" Line="37" Column="2" />
-      <File FileName="Assets/DrugUse.cs" Line="27" Column="6" />
-      <File FileName="Assets/Scripts/Upper/BattleManager.cs" Line="69" Column="1" />
-      <File FileName="Assets/Scripts/Upper/PersonObject.cs" Line="24" Column="43" />
-      <File FileName="Assets/HpManager.cs" Line="6" Column="5" />
+      <File FileName="Assets/PotSpoon.cs" Line="42" Column="32" />
+      <File FileName="Assets/ShelfManager.cs" Line="8" Column="40" />
+      <File FileName="Assets/Bag.cs" Line="12" Column="38" />
+      <File FileName="Assets/Drug.cs" Line="8" Column="28" />
+      <File FileName="Assets/DrugUse.cs" Line="24" Column="6" />
+      <File FileName="Assets/Scripts/Upper/BattleManager.cs" Line="59" Column="50" />
+      <File FileName="Assets/Scripts/Upper/PersonObject.cs" Line="242" Column="27" />
+      <File FileName="Assets/HpManager.cs" Line="35" Column="6" />
+      <File FileName="Assets/Scripts/Upper/UpperManager.cs" Line="24" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
