@@ -46,18 +46,28 @@ public class PersonObject : MonoBehaviour {
 
     [SerializeField] public int hpMax;
     public int hp;
-    private int fireTurns;
-    private int stunTurns;
-    private int powerUpTurns;
-    private int powerDownTurns;
-    private int defenseUpTurns;
-    private int defenseDownTurns;
+    public int fireTurns;
+    public int stunTurns;
+    public int powerUpTurns;
+    public int powerDownTurns;
+    public int defenseUpTurns;
+    public int defenseDownTurns;
 
     private int fireDamage;
 
     public Skill[] skills;
-    private int waitTurns;
+    public int waitTurns;
     private int lastSkillId;
+
+    [SerializeField] float buffIconPositionX;
+    [SerializeField] float buffIconPositionY;
+    [SerializeField] GameObject fireIcon;
+    [SerializeField] GameObject stunIcon;
+    [SerializeField] GameObject powerUpIcon;
+    [SerializeField] GameObject powerDownIcon;
+    [SerializeField] GameObject defenseUpIcon;
+    [SerializeField] GameObject defenseDownIcon;
+    private float buffIconHeight = -0.8f;
 
     // Use this for initialization
     void Start()
@@ -70,7 +80,7 @@ public class PersonObject : MonoBehaviour {
         defenseUpTurns = 0;
         defenseDownTurns = 0;
 
-        fireDamage = 20;
+        fireDamage = -20;
 
         waitTurns = 0;
         lastSkillId = -1;
@@ -79,7 +89,37 @@ public class PersonObject : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
+        int buffIconCount = 0;
+        if(fireTurns > 0)
+        {
+            Instantiate(fireIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0));
+            buffIconCount++;
+        }
+        if (stunTurns > 0)
+        {
+            Instantiate(stunIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0));
+            buffIconCount++;
+        }
+        if (powerUpTurns > 0)
+        {
+            Instantiate(powerUpIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0));
+            buffIconCount++;
+        }
+        if (powerDownTurns > 0)
+        {
+            Instantiate(powerDownIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0));
+            buffIconCount++;
+        }
+        if (defenseUpTurns > 0)
+        {
+            Instantiate(defenseUpIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0));
+            buffIconCount++;
+        }
+        if (defenseDownTurns > 0)
+        {
+            Instantiate(defenseDownIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0));
+            buffIconCount++;
+        }
     }
 
     public bool isDead()
@@ -92,27 +132,34 @@ public class PersonObject : MonoBehaviour {
         Debug.Log(hpMax + " " + hp + " " + fireTurns + " " + stunTurns);
         Debug.Log(opponentObjectScript.hpMax + " " + opponentObjectScript.hp + " " + opponentObjectScript.fireTurns + " " + opponentObjectScript.stunTurns);
 
-        // turn process
+        bool powerUp = false;
+        bool powerdown = false;
+        bool defenseUp = false;
+        bool defensedown = false;
         if (fireTurns > 0)
         {
             fireTurns--;
-            hp -= fireDamage;
+            AddHp(fireDamage);
         }
         if (powerUpTurns > 0)
         {
             powerUpTurns--;
+            powerUp = true;
         }
         if (powerDownTurns > 0)
         {
             powerDownTurns--;
+            powerdown = true;
         }
         if (defenseUpTurns > 0)
         {
             defenseUpTurns--;
+            defenseUp = true;
         }
         if (defenseDownTurns > 0)
         {
             defenseDownTurns--;
+            defensedown = true;
         }
         if (stunTurns > 0)
         {

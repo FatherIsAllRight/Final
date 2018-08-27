@@ -184,6 +184,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpMax: 100
+  hp: 0
+  fireTurns: 0
+  stunTurns: 0
+  powerUpTurns: 0
+  powerDownTurns: 0
+  defenseUpTurns: 0
+  defenseDownTurns: 0
+  waitTurns: 0
+  buffIconPositionX: 0
+  buffIconPositionY: 0
+  fireIcon: {fileID: 1939350143442260, guid: 2507ace12bb34ba42a025890e6280535, type: 2}
+  stunIcon: {fileID: 1581155634488050, guid: 2980dab35a3fe8949a8a0c9605275901, type: 2}
+  powerUpIcon: {fileID: 1038983363827872, guid: 4972e9aa99e52674d9d7fa38b628ddcb,
+    type: 2}
+  powerDownIcon: {fileID: 1024260165944680, guid: 95c47594857db8d43b7e2d42fc814498,
+    type: 2}
+  defenseUpIcon: {fileID: 1238444522753518, guid: f251d8debf6a99e4eaa228e1a8766f77,
+    type: 2}
+  defenseDownIcon: {fileID: 1349972019337412, guid: 8dba03e29ca607c468e6c884663f29c5,
+    type: 2}
 --- !u!212 &212170780527192870
 SpriteRenderer:
   m_ObjectHideFlags: 1
