@@ -144,8 +144,8 @@ public class PersonObject : MonoBehaviour {
 
     public void UseSkill(PersonObject opponentObjectScript)
     {
-        Debug.Log(hpMax + " " + hp + " " + fireTurns + " " + stunTurns);
-        Debug.Log(opponentObjectScript.hpMax + " " + opponentObjectScript.hp + " " + opponentObjectScript.fireTurns + " " + opponentObjectScript.stunTurns);
+        //Debug.Log(hpMax + " " + hp + " " + fireTurns + " " + stunTurns);
+        //Debug.Log(opponentObjectScript.hpMax + " " + opponentObjectScript.hp + " " + opponentObjectScript.fireTurns + " " + opponentObjectScript.stunTurns);
 
         bool powerUp = false;
         bool powerdown = false;

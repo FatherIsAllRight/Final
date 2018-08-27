@@ -51,11 +51,11 @@ public class BattleManager : MonoBehaviour {
                 aniTrigger = false;
                 if (moveTurn)
                 {
-                    Debug.Log("hero");
+                    //Debug.Log("hero");
                     hero.UseSkill(enemy);
                 }
                 else {
-                    Debug.Log("enemy");
+                    //Debug.Log("enemy");
                     enemy.UseSkill(hero);
                 }
                 moveTurn = !moveTurn;

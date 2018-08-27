@@ -78,8 +78,11 @@ public class Drug : MonoBehaviour {
                 break;
         }
         if (drugType < 14 && drugType > 0){
-            NoteManager.Instance.notePageUnlock[drugType] = true;
-            NoteManager.Instance.Refresh();
+            if(!NoteManager.Instance.notePageUnlock[drugType])
+            {
+                NoteManager.Instance.notePageUnlock[drugType] = true;
+                NoteManager.Instance.Refresh(drugType);
+            }
         }
             
         GetComponent<SpriteRenderer>().sprite = drugList[drugType];

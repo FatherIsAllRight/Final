@@ -37,8 +37,9 @@ public class NoteManager : MonoBehaviour {
 		
 	}
 
-    public void Refresh()
+    public void Refresh(int _pageNum)
     {
+        pageNum = _pageNum;
         if (notePageUnlock[pageNum])
         {
             noteSprite.sprite = notePageList[pageNum];
@@ -47,6 +48,7 @@ public class NoteManager : MonoBehaviour {
         {
             noteSprite.sprite = notePageList[0];
         }
+        pageNumText.text = pageNum.ToString() + " / " + (notePageList.Length - 1).ToString();
     }
 
     public void PageUp()
