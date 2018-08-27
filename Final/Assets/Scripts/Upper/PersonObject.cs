@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PersonObject : MonoBehaviour {
 
@@ -136,41 +137,49 @@ public class PersonObject : MonoBehaviour {
         if (fireTurns > 0)
         {
             buffIcon.Add(Instantiate(fireIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
+            buffIcon[buffIconCount].GetComponentInChildren<Text>().text = fireTurns.ToString();
             buffIconCount++;
         }
         if (stunTurns > 0)
         {
             buffIcon.Add(Instantiate(stunIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
+            buffIcon[buffIconCount].GetComponentInChildren<Text>().text = stunTurns.ToString();
             buffIconCount++;
         }
         if (powerUpTurns > 0)
         {
             buffIcon.Add(Instantiate(powerUpIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
+            buffIcon[buffIconCount].GetComponentInChildren<Text>().text = powerUpTurns.ToString();
             buffIconCount++;
         }
         if (powerDownTurns > 0)
         {
             buffIcon.Add(Instantiate(powerDownIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
+            buffIcon[buffIconCount].GetComponentInChildren<Text>().text = powerDownTurns.ToString();
             buffIconCount++;
         }
         if (defenseUpTurns > 0)
         {
             buffIcon.Add(Instantiate(defenseUpIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
+            buffIcon[buffIconCount].GetComponentInChildren<Text>().text = defenseUpTurns.ToString();
             buffIconCount++;
         }
         if (defenseDownTurns > 0)
         {
             buffIcon.Add(Instantiate(defenseDownIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
+            buffIcon[buffIconCount].GetComponentInChildren<Text>().text = defenseDownTurns.ToString();
             buffIconCount++;
         }
         if (healTurns > 0)
         {
             buffIcon.Add(Instantiate(healIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
+            buffIcon[buffIconCount].GetComponentInChildren<Text>().text = healTurns.ToString();
             buffIconCount++;
         }
         if (frogTurns > 0)
         {
             buffIcon.Add(Instantiate(frogIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
+            buffIcon[buffIconCount].GetComponentInChildren<Text>().text = frogTurns.ToString();
             buffIconCount++;
         }
     }
@@ -458,6 +467,12 @@ public class PersonObject : MonoBehaviour {
                 case 11:
                     battleManager.enemy.AddFrogTurns(3);
                     battleManager.hero.AddFrogTurns(3);
+                    //
+                    GameObject.Find("BattleManager").GetComponent<BattleManager>().AllChange2Frog();
+                    /*GameObject hero = GameObject.Find("BattleManager").GetComponent<BattleManager>().hero.GetComponentInChildren<Animator>().gameObject;
+                    GameObject enemy = GameObject.Find("BattleManager").GetComponent<BattleManager>().enemy.GetComponentInChildren<Animator>().gameObject;
+                    hero.GetComponent<Animator>().enabled = false;
+                    hero.GetComponent<SpriteRenderer>().sprite = */
                     useFrogAudio.Play();
                     break;
                 case 12:

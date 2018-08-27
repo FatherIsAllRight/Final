@@ -5151,6 +5151,7 @@ MonoBehaviour:
   - {fileID: 1695638951131390, guid: a9ad580994dc83844802de09b4e73791, type: 2}
   - {fileID: 1201481922985422, guid: 57ad4198a7ef8a74a8ab81d156a2106d, type: 2}
   enemyHpText: {fileID: 1575475512}
+  frog: {fileID: 21300000, guid: f666f844191324d46ae0bbc66ec577d1, type: 3}
 --- !u!1 &1485887171
 GameObject:
   m_ObjectHideFlags: 0
