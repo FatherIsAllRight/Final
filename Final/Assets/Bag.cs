@@ -5,6 +5,10 @@ using UnityEngine;
 public class Bag : MonoBehaviour {
     private static Bag instance = null;
     public static Bag Instance { get { return instance; } }
+
+    [SerializeField] GameObject material;
+    [SerializeField] Sprite[] sprites;
+
     void Awake()
     {
         if (instance != null && instance != this)
@@ -27,11 +31,27 @@ public class Bag : MonoBehaviour {
 
     public void GetMaterial(int[] addList)
     {
+        int addCount = 0;
+
         BagMaterial[] bagMaterials = GetComponentsInChildren<BagMaterial>();
         for (int i = 0; i < 6; i++)
         {
             //Debug.Log(bagMaterials[i].name);
             bagMaterials[i].AddMaterialToBag(addList[i]);
+
+            addCount += addList[i];
+        }
+
+        int addI = 0;
+        for (int i = 0; i < 6; i++)
+        {
+            for (int j = 0; j < addList[i]; j++)
+            {
+                GameObject oneMaterial = Instantiate(material);
+                oneMaterial.GetComponent<SpriteRenderer>().sprite = sprites[i];
+                material.GetComponent<MaterialToBag>().waitTime = 0.5f - 0.5f / addCount * addI;
+                addI++;
+            }
         }
     }
 }

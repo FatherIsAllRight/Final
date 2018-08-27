@@ -31,7 +31,7 @@ public class Enemy1 : PersonBehavior {
 
     public override void dropMaterial()
     {
-        if (materialDropTimes == 0 && myPersonObjectScript.hp < 100)
+        if (materialDropTimes == 0 && myPersonObjectScript.hp <= 100)
         {
             int[] materialList = new int[6];
             materialList[0] = Random.Range(3, 5);
@@ -43,7 +43,7 @@ public class Enemy1 : PersonBehavior {
             Bag.Instance.GetMaterial(materialList);
             materialDropTimes++;
         }
-        else if (materialDropTimes == 1 && myPersonObjectScript.hp < 50)
+        else if (materialDropTimes == 1 && myPersonObjectScript.hp <= 50)
         {
             int[] materialList = new int[6];
             materialList[0] = Random.Range(3, 5);
@@ -55,7 +55,7 @@ public class Enemy1 : PersonBehavior {
             Bag.Instance.GetMaterial(materialList);
             materialDropTimes++;
         }
-        else if (materialDropTimes == 2 && myPersonObjectScript.hp < 0)
+        else if (materialDropTimes == 2 && myPersonObjectScript.hp <= 0)
         {
             int[] materialList = new int[6];
             materialList[0] = 0;

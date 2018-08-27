@@ -3857,7 +3857,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1232823467
 GameObject:
@@ -4169,6 +4169,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 574033b001bad4d2190ba065f40f6b62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  material: {fileID: 1419836433554828, guid: dba18f3be2fd8d743863cf3e9650f6b8, type: 2}
+  sprites:
+  - {fileID: 21300000, guid: 3d7ab6b67ac174af1bb6c541fe94272a, type: 3}
+  - {fileID: 21300000, guid: dd12bb9a312e743259b71b370e802fb8, type: 3}
+  - {fileID: 21300000, guid: c6f903edef6d74b308073dd59b49932f, type: 3}
+  - {fileID: 21300000, guid: 94c28949b599d422bb6fffc2c2a0dd78, type: 3}
+  - {fileID: 21300000, guid: 0a297151108c3413a8e8f18f67f50e47, type: 3}
+  - {fileID: 21300000, guid: 746f0641007b541bb8bdeee72839fdb6, type: 3}
 --- !u!1 &1401889229
 GameObject:
   m_ObjectHideFlags: 0
