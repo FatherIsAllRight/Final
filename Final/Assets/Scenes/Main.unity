@@ -4742,7 +4742,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1107414697
 Animator:
   serializedVersion: 3
@@ -5593,6 +5593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextRoomButton: {fileID: 1006152736}
   cheastOpened: {fileID: 21300000, guid: 3423197a8e79c413fbe38e5657426b87, type: 3}
+  cheastClosed: {fileID: 21300000, guid: 75065bae0a6374c16850876ea744b321, type: 3}
   cheastAudio: {fileID: 201499488}
 --- !u!61 &1410172795
 BoxCollider2D:
@@ -6566,7 +6567,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: df955df21c44e604f9bdd9370aa722f2, type: 3}
   roomIconsSprite:
   - {fileID: 21300000, guid: 09b7b170a061aca42bdc47e38d090ba9, type: 3}
-  - {fileID: 21300000, guid: 6c201414266ca2f45b35f4c4275c4506, type: 3}
+  - {fileID: 21300000, guid: 2e2e843e016d55c4aba86b95b69c76cf, type: 3}
+  - {fileID: 21300000, guid: 64883903d0fb3bd43b1cbc86d3a6b62d, type: 3}
+  - {fileID: 21300000, guid: be60ad350d5b2ff4caacf09290feee6a, type: 3}
+  - {fileID: 21300000, guid: 3193ebe169d214649a3b61cf1686a952, type: 3}
 --- !u!1 &1748152364
 GameObject:
   m_ObjectHideFlags: 0
@@ -8451,7 +8455,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &2099888008
 Animator:
   serializedVersion: 3
