@@ -7,6 +7,7 @@ public class Cheast : MonoBehaviour {
     [SerializeField] GameObject nextRoomButton;
     private bool isOpen;
     [SerializeField] Sprite cheastOpened;
+    [SerializeField] AudioSource cheastAudio;
 
     // Use this for initialization
     void Start () {
@@ -33,6 +34,7 @@ public class Cheast : MonoBehaviour {
             nextRoomButton.SetActive(true);
             GetComponent<SpriteRenderer>().sprite = cheastOpened;
             isOpen = true;
+            cheastAudio.Play();
         }
     }
 

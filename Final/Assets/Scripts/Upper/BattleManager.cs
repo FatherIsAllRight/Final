@@ -103,13 +103,7 @@ public class BattleManager : MonoBehaviour {
             nextRoomButton.SetActive(true);
             Destroy(GameObject.FindGameObjectWithTag("Enemy"));
             enemyHpText.SetActive(false);
-            hero.fireTurns = 0;
-            hero.stunTurns = 0;
-            hero.powerUpTurns = 0;
-            hero.powerDownTurns = 0;
-            hero.defenseUpTurns = 0;
-            hero.defenseDownTurns = 0;
-            hero.drawBuffIcon();
+            hero.clearBuff();
         }
     }
 }

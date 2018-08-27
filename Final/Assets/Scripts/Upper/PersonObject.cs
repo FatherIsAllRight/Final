@@ -92,6 +92,7 @@ public class PersonObject : MonoBehaviour {
 
     private AudioSource useMedicineAudio;
     private AudioSource useFrogAudio;
+    private AudioSource useBombAudio;
 
     // Use this for initialization
     void Start()
@@ -117,6 +118,7 @@ public class PersonObject : MonoBehaviour {
 
         useMedicineAudio = GameObject.Find("UseMedicine").GetComponent<AudioSource>();
         useFrogAudio = GameObject.Find("Frog").GetComponent<AudioSource>();
+        useBombAudio = GameObject.Find("Bomb").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -320,6 +322,10 @@ public class PersonObject : MonoBehaviour {
         {
             this.fireTurns = 0;
         }
+        if (this.fireTurns > 99)
+        {
+            this.fireTurns = 99;
+        }
     }
 
     public void AddStunTurns(int stunTurns)
@@ -328,6 +334,10 @@ public class PersonObject : MonoBehaviour {
         if (this.stunTurns < 0)
         {
             this.stunTurns = 0;
+        }
+        if (this.stunTurns > 99)
+        {
+            this.stunTurns = 99;
         }
     }
 
@@ -338,6 +348,10 @@ public class PersonObject : MonoBehaviour {
         {
             this.powerUpTurns = 0;
         }
+        if (this.powerUpTurns > 99)
+        {
+            this.powerUpTurns = 99;
+        }
     }
 
     public void AddPowerDownTurns(int powerDownTurns)
@@ -346,6 +360,10 @@ public class PersonObject : MonoBehaviour {
         if (this.powerDownTurns < 0)
         {
             this.powerDownTurns = 0;
+        }
+        if (this.powerDownTurns > 99)
+        {
+            this.powerDownTurns = 99;
         }
     }
 
@@ -356,6 +374,10 @@ public class PersonObject : MonoBehaviour {
         {
             this.defenseUpTurns = 0;
         }
+        if (this.defenseUpTurns > 99)
+        {
+            this.defenseUpTurns = 99;
+        }
     }
 
     public void AddDefenseDownTurns(int defenseDownTurns)
@@ -365,12 +387,18 @@ public class PersonObject : MonoBehaviour {
         {
             this.defenseDownTurns = 0;
         }
+        if (this.defenseDownTurns > 99)
+        {
+            this.defenseDownTurns = 99;
+        }
     }
 
     public void SetHealTurns(int healTurns, int healRestore)
     {
-        if (healRestore < this.healRestore)
+        if(this.healTurns == 0 || healRestore > this.healRestore)
         {
+            this.healTurns = healTurns;
+            this.healRestore = healRestore;
         }
         else if (healRestore == this.healRestore)
         {
@@ -379,14 +407,14 @@ public class PersonObject : MonoBehaviour {
                 this.healTurns = healTurns;
             }
         }
-        else
+
+        if (this.healTurns < 0)
         {
-            this.healTurns = healTurns;
-            this.healRestore = healRestore;
-            if (this.healTurns < 0)
-            {
-                this.healTurns = 0;
-            }
+            this.healTurns = 0;
+        }
+        if (this.healTurns > 99)
+        {
+            this.healTurns = 99;
         }
     }
 
@@ -397,6 +425,23 @@ public class PersonObject : MonoBehaviour {
         {
             this.frogTurns = 0;
         }
+        if (this.frogTurns > 99)
+        {
+            this.frogTurns = 99;
+        }
+    }
+
+    public void clearBuff()
+    {
+        fireTurns = 0;
+        stunTurns = 0;
+        powerUpTurns = 0;
+        powerDownTurns = 0;
+        defenseUpTurns = 0;
+        defenseDownTurns = 0;
+        healTurns = 0;
+        frogTurns = 0;
+        drawBuffIcon();
     }
 
     private void OnMouseDown()
@@ -432,18 +477,18 @@ public class PersonObject : MonoBehaviour {
                     break;
                 case 5:
                     SetHealTurns(5, 20);
-                    useMedicineAudio.Play();
+                    //useMedicineAudio.Play();
                     break;
                 case 6:
                     AddHp(-50);
-                    useMedicineAudio.Play();
+                    useBombAudio.Play();
                     break;
                 case 7:
                     SetHealTurns(8, 15);
-                    useMedicineAudio.Play();
+                    //useMedicineAudio.Play();
                     break;
                 case 8:
-                    AddHp(99);
+                    AddHp(999);
                     useMedicineAudio.Play();
                     break;
                 case 9:

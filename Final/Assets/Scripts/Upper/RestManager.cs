@@ -8,6 +8,8 @@ public class RestManager : MonoBehaviour {
     [SerializeField] GameObject nextRoomButton;
     [SerializeField] PersonObject hero;
 
+    [SerializeField] AudioSource restAudio;
+
     // Use this for initialization
     void Start () {
 
@@ -22,5 +24,6 @@ public class RestManager : MonoBehaviour {
     {
         hero.AddHp(restore);
         nextRoomButton.SetActive(true);
+        restAudio.Play();
     }
 }
