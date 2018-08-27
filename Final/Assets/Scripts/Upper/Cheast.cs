@@ -29,7 +29,7 @@ public class Cheast : MonoBehaviour {
             materialList[1] = Random.Range(3, 6);
             materialList[2] = 0;
             materialList[3] = Random.Range(3, 7);
-            materialList[4] = 0;
+            materialList[4] = Random.Range(1, 21) / 20;
             materialList[5] = Random.Range(4, 7);
             Bag.Instance.GetMaterial(materialList);
             nextRoomButton.SetActive(true);

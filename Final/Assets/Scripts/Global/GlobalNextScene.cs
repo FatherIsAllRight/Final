@@ -10,6 +10,7 @@ public class GlobalNextScene : MonoBehaviour {
     [SerializeField] float MaskTime;
     [SerializeField] int NextScene;
     private int phrase;
+    [SerializeField] Sprite guide;
 
     // Use this for initialization
     void Start () {
@@ -29,6 +30,25 @@ public class GlobalNextScene : MonoBehaviour {
         }
         else if(phrase == 2)
         {
+            Mask.color = new Color(Mask.color.r, Mask.color.g, Mask.color.b, Mask.color.a + 1 * Time.deltaTime / MaskTime);
+            if (Mask.color.a > 1)
+            {
+                if(guide == null)
+                    SceneManager.LoadScene(NextScene);
+                phrase = 3;
+                GetComponent<SpriteRenderer>().sprite = guide;
+            }
+        }
+        else if(phrase == 3)
+        {
+            Mask.color = new Color(Mask.color.r, Mask.color.g, Mask.color.b, Mask.color.a - 1 * Time.deltaTime / MaskTime);
+            if (Mask.color.a < 0)
+            {
+                phrase = 4;
+            }
+        }
+        else if(phrase == 5)
+        {
             Bgm.volume -= 1.1f * Time.deltaTime / MaskTime;
             Mask.color = new Color(Mask.color.r, Mask.color.g, Mask.color.b, Mask.color.a + 1 * Time.deltaTime / MaskTime);
             if (Mask.color.a > 1)
@@ -40,9 +60,9 @@ public class GlobalNextScene : MonoBehaviour {
 
     void OnMouseDown()
     {
-        if(phrase == 1)
+        if(phrase == 1 || phrase == 4)
         {
-            phrase = 2;
+            phrase++;
         }
     }
 }

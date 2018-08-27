@@ -39,15 +39,16 @@ public class Dragon : PersonBehavior {
 
     public override int selectSkill()
     {
-        int temp = Random.Range(0, 100);
-        if (temp < 65)
-            return 0;
-        else if (temp < 85)
-            return 1;
-        else if (temp < 95)
-            return 2;
-        else
+        if (myPersonObjectScript.hp <= 250)
             return 3;
+        
+        int temp = Random.Range(0, 100);
+        if (temp < 70)
+            return 0;
+        else if (temp < 90)
+            return 1;
+        else
+            return 2;
     }
 
     public override void dropMaterial()
