@@ -56,22 +56,22 @@ public class Drug : MonoBehaviour {
             case 444:
                 drugType = 11;
                 break;
-            case 555:
-                drugType = 12;
-                break;
             default:
                 int a = _drugType / 100;
                 int b = (_drugType % 100) / 10;
                 int c = _drugType % 10;
-                if(a == 5 || b == 5 || c == 5)
-                {
+                if(b == 5 && (a == 5 || c == 5)){
                     drugType = 13;
+                    break;
+                }
+                else if(a == 5 || b == 5 || c == 5)
+                {
+                    drugType = 12;
                     break;
                 }
                 else if(b == 4 && (a == 4 || c == 4))
                 {
                     drugType = 14;
-
                     break;
                 }
                 drugType = 0;

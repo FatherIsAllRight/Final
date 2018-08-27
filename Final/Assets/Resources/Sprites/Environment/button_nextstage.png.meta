@@ -1,5 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Final/Assets/Resources/Sprites/Environment/button_nextstage.png.meta
 guid: 08f25d93aefcedb41b7eab76769b432a
+=======
+guid: dac35f4ee3693491ca6c1eadc4688a30
+timeCreated: 1535394235
+licenseType: Free
+>>>>>>> 95238c111f8274a22be45cca453bcc8c01925507:Final/Assets/Resources/Sprites/Environment/button_nextstage.png.meta
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
