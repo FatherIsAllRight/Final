@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MaterialToBag : MonoBehaviour {
 
+    private AudioSource getMaterialAudio;
     private Vector3 start = new Vector3(3.5f, 3, 0);
     private Vector3 end = new Vector3(6f, -1, 0);
     public float waitTime = 99f;
@@ -12,7 +13,7 @@ public class MaterialToBag : MonoBehaviour {
     void Start () {
         //this.transform.position = start;
         //this.GetComponent<SpriteRenderer>().color = new Color(this.GetComponent<SpriteRenderer>().color.r, this.GetComponent<SpriteRenderer>().color.g, this.GetComponent<SpriteRenderer>().color.b, 0);
-
+        getMaterialAudio = GameObject.Find("GetMaterial").GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -25,6 +26,7 @@ public class MaterialToBag : MonoBehaviour {
             GetComponent<Animator>().SetInteger("Fall", 1);
             if (this.transform.position.y < 0)
             {
+                getMaterialAudio.Play();
                 Destroy(this.gameObject);
             }
         }

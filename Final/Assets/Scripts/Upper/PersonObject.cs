@@ -15,6 +15,9 @@ public class PersonObject : MonoBehaviour {
         public int powerDownTurns = 0;
         public int defenseUpTurns = 0;
         public int defenseDownTurns = 0;
+        public int healTurns = 0;
+        public int healRestore = 0;
+        public int frogTurns = 0;
         // to self
         public int selfHp = 0;
         public int selfFireTurns = 0;
@@ -23,24 +26,33 @@ public class PersonObject : MonoBehaviour {
         public int selfPowerDownTurns = 0;
         public int selfDefenseUpTurns = 0;
         public int selfDefenseDownTurns = 0;
+        public int selfHealTurns = 0;
+        public int selfHealRestore = 0;
+        public int selfFrogTurns = 0;
 
         public Skill()
         {
-            this.selfWaitTurns = 0;
-            this.hp = 0;
-            this.fireTurns = 0;
-            this.stunTurns = 0;
-            this.powerUpTurns = 0;
-            this.powerDownTurns = 0;
-            this.defenseUpTurns = 0;
-            this.defenseDownTurns = 0;
-            this.selfHp = 0;
-            this.selfFireTurns = 0;
-            this.selfStunTurns = 0;
-            this.selfPowerUpTurns = 0;
-            this.selfPowerDownTurns = 0;
-            this.selfDefenseUpTurns = 0;
-            this.selfDefenseDownTurns = 0;
+            selfWaitTurns = 0;
+            hp = 0;
+            fireTurns = 0;
+            stunTurns = 0;
+            powerUpTurns = 0;
+            powerDownTurns = 0;
+            defenseUpTurns = 0;
+            defenseDownTurns = 0;
+            healTurns = 0;
+            healRestore = 0;
+            frogTurns = 0;
+            selfHp = 0;
+            selfFireTurns = 0;
+            selfStunTurns = 0;
+            selfPowerUpTurns = 0;
+            selfPowerDownTurns = 0;
+            selfDefenseUpTurns = 0;
+            selfDefenseDownTurns = 0;
+            selfHealTurns = 0;
+            selfHealRestore = 0;
+            selfFrogTurns = 0;
         }
     }
 
@@ -52,8 +64,12 @@ public class PersonObject : MonoBehaviour {
     public int powerDownTurns;
     public int defenseUpTurns;
     public int defenseDownTurns;
+    public int healTurns;
+    public int frogTurns;
 
     private int fireDamage;
+    private int healRestore;
+    private int powerUpFactor;
 
     public Skill[] skills;
     public int waitTurns;
@@ -67,10 +83,15 @@ public class PersonObject : MonoBehaviour {
     [SerializeField] GameObject powerDownIcon;
     [SerializeField] GameObject defenseUpIcon;
     [SerializeField] GameObject defenseDownIcon;
+    [SerializeField] GameObject healIcon;
+    [SerializeField] GameObject frogIcon;
     private List<GameObject> buffIcon;
     private float buffIconHeight = -0.8f;
 
     [SerializeField] PersonBehavior personBehavior;
+
+    private AudioSource useMedicineAudio;
+    private AudioSource useFrogAudio;
 
     // Use this for initialization
     void Start()
@@ -82,13 +103,20 @@ public class PersonObject : MonoBehaviour {
         powerDownTurns = 0;
         defenseUpTurns = 0;
         defenseDownTurns = 0;
+        healTurns = 0;
+        frogTurns = 0;
 
         fireDamage = -20;
+        healRestore = 0;
+        powerUpFactor = 2;
 
         waitTurns = 0;
         lastSkillId = -1;
 
         buffIcon = new List<GameObject>();
+
+        useMedicineAudio = GameObject.Find("UseMedicine").GetComponent<AudioSource>();
+        useFrogAudio = GameObject.Find("Frog").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -135,6 +163,16 @@ public class PersonObject : MonoBehaviour {
             buffIcon.Add(Instantiate(defenseDownIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
             buffIconCount++;
         }
+        if (healTurns > 0)
+        {
+            buffIcon.Add(Instantiate(healIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
+            buffIconCount++;
+        }
+        if (frogTurns > 0)
+        {
+            buffIcon.Add(Instantiate(frogIcon, new Vector3(buffIconPositionX, buffIconPositionY + buffIconCount * buffIconHeight, 0), new Quaternion(0, 0, 0, 0)));
+            buffIconCount++;
+        }
     }
 
     public bool isDead()
@@ -147,10 +185,11 @@ public class PersonObject : MonoBehaviour {
         //Debug.Log(hpMax + " " + hp + " " + fireTurns + " " + stunTurns);
         //Debug.Log(opponentObjectScript.hpMax + " " + opponentObjectScript.hp + " " + opponentObjectScript.fireTurns + " " + opponentObjectScript.stunTurns);
 
-        bool powerUp = false;
+        int powerUp = 1;
         bool powerdown = false;
         bool defenseUp = false;
         bool defensedown = false;
+        bool cannotmove = false;
         if (fireTurns > 0)
         {
             fireTurns--;
@@ -159,7 +198,7 @@ public class PersonObject : MonoBehaviour {
         if (powerUpTurns > 0)
         {
             powerUpTurns--;
-            powerUp = true;
+            powerUp = powerUpFactor;
         }
         if (powerDownTurns > 0)
         {
@@ -176,9 +215,24 @@ public class PersonObject : MonoBehaviour {
             defenseDownTurns--;
             defensedown = true;
         }
+        if (healTurns > 0)
+        {
+            healTurns--;
+            AddHp(healRestore);
+        }
         if (stunTurns > 0)
         {
             stunTurns--;
+            cannotmove = true;
+        }
+        if (frogTurns > 0)
+        {
+            frogTurns--;
+            cannotmove = true;
+        }
+
+        if(cannotmove)
+        {
             return;
         }
 
@@ -194,15 +248,19 @@ public class PersonObject : MonoBehaviour {
                 AddPowerUpTurns(skills[lastSkillId].selfPowerUpTurns);
                 AddPowerDownTurns(skills[lastSkillId].selfPowerDownTurns);
                 AddDefenseUpTurns(skills[lastSkillId].selfDefenseUpTurns);
-                AddPowerDownTurns(skills[lastSkillId].selfDefenseDownTurns);
+                AddDefenseDownTurns(skills[lastSkillId].selfDefenseDownTurns);
+                SetHealTurns(skills[lastSkillId].selfHealTurns, skills[lastSkillId].selfHealRestore);
+                AddFrogTurns(skills[lastSkillId].selfFrogTurns);
 
-                opponentObjectScript.AddHp(skills[lastSkillId].hp);
+                opponentObjectScript.AddHp(skills[lastSkillId].hp * powerUp);
                 opponentObjectScript.AddFireTurns(skills[lastSkillId].fireTurns);
                 opponentObjectScript.AddStunTurns(skills[lastSkillId].stunTurns);
                 opponentObjectScript.AddPowerUpTurns(skills[lastSkillId].powerUpTurns);
                 opponentObjectScript.AddPowerDownTurns(skills[lastSkillId].powerDownTurns);
                 opponentObjectScript.AddDefenseUpTurns(skills[lastSkillId].defenseUpTurns);
-                opponentObjectScript.AddPowerDownTurns(skills[lastSkillId].defenseDownTurns);
+                opponentObjectScript.AddDefenseDownTurns(skills[lastSkillId].defenseDownTurns);
+                opponentObjectScript.SetHealTurns(skills[lastSkillId].healTurns, skills[lastSkillId].healRestore);
+                opponentObjectScript.AddFrogTurns(skills[lastSkillId].frogTurns);
             }
         }
         else
@@ -217,15 +275,19 @@ public class PersonObject : MonoBehaviour {
                 AddPowerUpTurns(skills[lastSkillId].selfPowerUpTurns);
                 AddPowerDownTurns(skills[lastSkillId].selfPowerDownTurns);
                 AddDefenseUpTurns(skills[lastSkillId].selfDefenseUpTurns);
-                AddPowerDownTurns(skills[lastSkillId].selfDefenseDownTurns);
+                AddDefenseDownTurns(skills[lastSkillId].selfDefenseDownTurns);
+                SetHealTurns(skills[lastSkillId].selfHealTurns, skills[lastSkillId].selfHealRestore);
+                AddFrogTurns(skills[lastSkillId].selfFrogTurns);
 
-                opponentObjectScript.AddHp(skills[lastSkillId].hp);
+                opponentObjectScript.AddHp(skills[lastSkillId].hp * powerUp);
                 opponentObjectScript.AddFireTurns(skills[lastSkillId].fireTurns);
                 opponentObjectScript.AddStunTurns(skills[lastSkillId].stunTurns);
                 opponentObjectScript.AddPowerUpTurns(skills[lastSkillId].powerUpTurns);
                 opponentObjectScript.AddPowerDownTurns(skills[lastSkillId].powerDownTurns);
                 opponentObjectScript.AddDefenseUpTurns(skills[lastSkillId].defenseUpTurns);
-                opponentObjectScript.AddPowerDownTurns(skills[lastSkillId].defenseDownTurns);
+                opponentObjectScript.AddDefenseDownTurns(skills[lastSkillId].defenseDownTurns);
+                opponentObjectScript.SetHealTurns(skills[lastSkillId].healTurns, skills[lastSkillId].healRestore);
+                opponentObjectScript.AddFrogTurns(skills[lastSkillId].frogTurns);
             }
         }
     }
@@ -299,68 +361,116 @@ public class PersonObject : MonoBehaviour {
         }
     }
 
+    public void SetHealTurns(int healTurns, int healRestore)
+    {
+        if (healRestore < this.healRestore)
+        {
+        }
+        else if (healRestore == this.healRestore)
+        {
+            if(healTurns > this.healTurns)
+            {
+                this.healTurns = healTurns;
+            }
+        }
+        else
+        {
+            this.healTurns = healTurns;
+            this.healRestore = healRestore;
+            if (this.healTurns < 0)
+            {
+                this.healTurns = 0;
+            }
+        }
+    }
+
+    public void AddFrogTurns(int frogTurns)
+    {
+        this.frogTurns += frogTurns;
+        if (this.frogTurns < 0)
+        {
+            this.frogTurns = 0;
+        }
+    }
+
     private void OnMouseDown()
     {
         if(DrugUse.Instance.drug != null)
         {
             DrugUse.Instance.UseThisDrug();
+            BattleManager battleManager = GameObject.Find("BattleManager").GetComponent<BattleManager>();
             switch (DrugUse.Instance.holdDrugType)
             {
-                //TODO
                 case 1:
                     AddHp(40);
+                    useMedicineAudio.Play();
                     break;
                 case 2:
                     AddHp(-25);
                     AddFireTurns(-99);
+                    useMedicineAudio.Play();
                     break;
                 case 3:
                     AddHp(20);
-                    //AddHpByTurn(5, 10);
+                    SetHealTurns(5, 10);
+                    useMedicineAudio.Play();
                     break;
                 case 4:
                     AddFireTurns(-99);
                     AddStunTurns(-99);
                     AddPowerDownTurns(-99);
                     AddDefenseDownTurns(-99);
-                    //AddHpByTurn(5, 10);
+                    AddFrogTurns(-99);
+                    SetHealTurns(5, 10);
+                    useMedicineAudio.Play();
                     break;
                 case 5:
-                    //AddHpByTurn(5, 20);
+                    SetHealTurns(5, 20);
+                    useMedicineAudio.Play();
                     break;
                 case 6:
                     AddHp(-50);
+                    useMedicineAudio.Play();
                     break;
                 case 7:
-                    //AddHpByTurn(8, 15);
+                    SetHealTurns(8, 15);
+                    useMedicineAudio.Play();
                     break;
                 case 8:
                     AddHp(99);
+                    useMedicineAudio.Play();
                     break;
                 case 9:
                     AddFireTurns(5);
+                    useMedicineAudio.Play();
                     break;
                 case 10:
                     AddFireTurns(-99);
-                    //AddHpByTurn(5, 10);
+                    SetHealTurns(5, 10);
+                    useMedicineAudio.Play();
                     break;
                 case 11:
-                    //AddFrogTurn(3);
+                    battleManager.enemy.AddFrogTurns(3);
+                    battleManager.hero.AddFrogTurns(3);
+                    useFrogAudio.Play();
                     break;
                 case 12:
                     AddPowerUpTurns(99);
+                    useMedicineAudio.Play();
                     break;
                 case 13:
-                    BattleManager battleManager = GameObject.Find("BattleManager").GetComponent<BattleManager>();
                     battleManager.enemy.AddHp((int)(-battleManager.enemy.hpMax * 0.8f));
                     battleManager.hero.AddHp((int)(-battleManager.hero.hpMax * 0.8f));
+                    useMedicineAudio.Play();
                     break;
                 case 14:
                     int[] temp = { 0, 0, 0, 1, 0, 0 };
                     Bag.Instance.GetMaterial(temp);
+                    useFrogAudio.Play();
                     break;
                 default:
                     AddHp(-1);
+                    useMedicineAudio.Play();
                     break;
             }
         }

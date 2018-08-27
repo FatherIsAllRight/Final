@@ -12,8 +12,9 @@ public class PotSpoon : MonoBehaviour {
     private bool shine;
     [SerializeField] Animator glowAni;
     [SerializeField] GameObject fire;
+    [SerializeField] AudioSource boilingAudio;
     // Use this for initialization
-	void Start () {
+    void Start () {
         cook = false;
         shine = false;
         cookCurrentTime = 0;
@@ -79,6 +80,7 @@ public class PotSpoon : MonoBehaviour {
             cook = true;
             GetComponent<PolygonCollider2D>().enabled = false;
             cookAni.SetTrigger("Cook");
+            boilingAudio.Play();
         }
     }
 }

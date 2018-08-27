@@ -207,6 +207,8 @@ MonoBehaviour:
   powerDownTurns: 0
   defenseUpTurns: 0
   defenseDownTurns: 0
+  healTurns: 0
+  frogTurns: 0
   waitTurns: 0
   buffIconPositionX: 0
   buffIconPositionY: 0
@@ -220,6 +222,8 @@ MonoBehaviour:
     type: 2}
   defenseDownIcon: {fileID: 1349972019337412, guid: 8dba03e29ca607c468e6c884663f29c5,
     type: 2}
+  healIcon: {fileID: 1913273943812276, guid: 33d31d0062262344a9f2ee81212e6f48, type: 2}
+  frogIcon: {fileID: 1050743620435346, guid: 96183c9ce8fd1aa42b79ff63bbe47a1b, type: 2}
   personBehavior: {fileID: 114096222427259476}
 --- !u!114 &114096222427259476
 MonoBehaviour:

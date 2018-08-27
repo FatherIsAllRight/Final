@@ -9,6 +9,7 @@ public class NoteManager : MonoBehaviour {
     private int pageNum;
     private SpriteRenderer noteSprite;
     [SerializeField] Text pageNumText;
+    [SerializeField] AudioSource noteAudio;
 
     private static NoteManager instance = null;
     public static NoteManager Instance { get { return instance; } }
@@ -49,6 +50,7 @@ public class NoteManager : MonoBehaviour {
             noteSprite.sprite = notePageList[0];
         }
         pageNumText.text = pageNum.ToString() + " / " + (notePageList.Length - 1).ToString();
+        noteAudio.Play();
     }
 
     public void PageUp()
@@ -65,6 +67,7 @@ public class NoteManager : MonoBehaviour {
             noteSprite.sprite = notePageList[0];
         }
         pageNumText.text = pageNum.ToString() + " / " + (notePageList.Length - 1).ToString();
+        noteAudio.Play();
     }
 
     public void PageDown()
@@ -81,5 +84,6 @@ public class NoteManager : MonoBehaviour {
             noteSprite.sprite = notePageList[0];
         }
         pageNumText.text = pageNum.ToString() + " / " + (notePageList.Length - 1).ToString();
+        noteAudio.Play();
     }
 }
